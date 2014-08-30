@@ -2,9 +2,11 @@
 %html
   %head
     %title Eureka
+    = stylesheet_link_tag 'https://api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.css'
     = stylesheet_link_tag 'application', media: 'all'
 
     = jquery_include_tag :google
+    = javascript_include_tag 'https://api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.js', async: false
     = javascript_include_tag 'application'
 
     = csrf_meta_tags

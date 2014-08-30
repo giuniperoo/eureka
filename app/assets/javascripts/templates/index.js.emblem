@@ -1,3 +1,6 @@
-ul
-  each item in model
-    li = item
+.sidebar
+  .heading
+    h1 Our locations
+  #listings.listings
+
+#map.map
