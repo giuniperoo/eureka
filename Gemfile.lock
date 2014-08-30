@@ -77,6 +77,9 @@ GEM
     erubis (2.7.0)
     execjs (2.2.1)
     ffi (1.9.3)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     formatador (0.2.5)
     guard (2.6.1)
       formatador (>= 0.2.4)
@@ -232,6 +235,7 @@ DEPENDENCIES
   ember-rails
   ember-source
   emblem-rails
+  figaro
   guard-rspec
   haml-rails
   jbuilder (~> 2.0)

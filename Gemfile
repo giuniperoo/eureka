@@ -17,6 +17,7 @@ gem 'ember-source'
 gem 'emblem-rails'
 
 gem 'pg'
+gem 'figaro'
 
 group :doc do
   gem 'sdoc', require: false
