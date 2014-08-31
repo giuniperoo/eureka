@@ -16,6 +16,12 @@ $border: 10px;
 #map {
   height: inherit;
 
-  // hides zoom widget and satellite toggle
-  .gmnoprint { display: none; }
+  // hides zoom widget, satellite toggle, text
+  .gmnoprint,
+  .leaflet-control-container { display: none; }
+}
+
+#live-geolocation a:hover {
+  color: #404040;
+  text-decoration: underline;
 }

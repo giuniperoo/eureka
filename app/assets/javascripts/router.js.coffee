@@ -1,4 +1,5 @@
 # For more information see: http://emberjs.com/guides/routing/
 
 App.Router.map ()->
-  @route 'blah'
+  @route 'g'
+  @route 'mb'

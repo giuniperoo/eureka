@@ -17,6 +17,4 @@
  *= require_self
  */
 
-.ember-application {
-  margin: 20px;
-}
+.ember-application { margin: 20px; }

@@ -1,4 +1,4 @@
-App.BlahView = Em.View.extend({
+App.GView = Em.View.extend({
   supports: function(bool, suffix) {
     var s = "Your browser ";
     if (bool) {
