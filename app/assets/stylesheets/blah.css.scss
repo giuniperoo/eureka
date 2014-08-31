@@ -1,0 +1,21 @@
+$diameter: 300px;
+$border: 10px;
+
+.container {
+  width: $diameter;
+  height: $diameter;
+  border-radius: ($diameter / 2) + $border;
+
+  z-index: 1;
+  margin: 50px;
+  overflow: hidden;
+  position: relative;
+  border: $border solid #afdad6;
+}
+
+#map {
+  height: inherit;
+
+  // hides zoom widget and satellite toggle
+  .gmnoprint { display: none; }
+}
