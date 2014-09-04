@@ -3,3 +3,4 @@
 App.Router.map ()->
   @route 'g'
   @route 'mb'
+  @route 'wc'

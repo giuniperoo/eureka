@@ -16,6 +16,12 @@ $border: 10px;
 #map {
   height: inherit;
 
+  &.watercolor {
+    width: 100%;
+    height: 400px;
+    margin-top: 20px;
+  }
+
   // hides zoom widget, satellite toggle, text
   .gmnoprint,
   .leaflet-control-container { display: none; }

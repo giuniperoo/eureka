@@ -1,4 +1,4 @@
-App.MbView = Em.View.extend({
+App.WcView = Em.View.extend({
   supports: function(bool, suffix) {
     var s = "Your browser ";
     if (bool) {
@@ -14,14 +14,15 @@ App.MbView = Em.View.extend({
   },
 
   showMap: function(loc) {
-    L.mapbox.accessToken = 'pk.eyJ1IjoiZ2l1bmlwZXJvbyIsImEiOiJ5QldHbVlvIn0.gBOtqy71Pjhf2gwVsTnP9A';
-
-    var map = L.mapbox.map('map', 'giuniperoo.jbpb2m46')
-      .setView([loc.coords.latitude, loc.coords.longitude], 15);
-
+    var layer = new L.StamenTileLayer('watercolor');
     var marker = new L.Marker(new L.LatLng(loc.coords.latitude, loc.coords.longitude))
       .bindPopup('You are here (more or less)');
+    var map = new L.Map('map', {
+        center: new L.LatLng(loc.coords.latitude, loc.coords.longitude),
+        zoom: 16
+    });
 
+    map.addLayer(layer);
     map.addLayer(marker);
   },
 
