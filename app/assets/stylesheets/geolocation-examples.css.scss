@@ -1,6 +1,8 @@
 $diameter: 300px;
 $border: 10px;
 
+$ruddy: #c27778;
+
 .container {
   width: $diameter;
   height: $diameter;
@@ -13,17 +15,60 @@ $border: 10px;
   border: $border solid #afdad6;
 }
 
+
+@keyframes markerdrop {
+  0%   { top: -70px; }
+  100% { top:   0px; }
+}
+
+header {
+  display: inline;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 2.2;
+
+  &:before {
+    font-family: 'FontAwesome';
+    content: '\f041';
+    margin-right: 8px;
+    position: relative;
+    top: -70px;
+
+    animation: markerdrop 0.2s 2s 1;
+    animation-fill-mode: forwards;
+  }
+}
+
+$brandon: 'Brandon', 'Helvetica Neue', Helvetica, Arial;
+
+@font-face {
+  font-family: 'Brandon';
+  src: font-url('Brandon_light.otf');
+  font-weight: 400;
+}
+
+.loader {
+  top: calc(50% - 15px);
+  left: calc(50% - 15px);
+  color: $ruddy;
+  z-index: 1;
+  display: none;
+  position: absolute;
+  font-size: 30px;
+}
+
 #map {
   height: inherit;
 
   &.watercolor {
     width: 100%;
     height: 400px;
-    margin-top: 20px;
+    border: 1px dashed $ruddy;
+    position: relative;
+    background-color: whitesmoke;
   }
 
   // hides zoom widget, satellite toggle, text
-  .gmnoprint,
   .leaflet-control-container { display: none; }
 }
 

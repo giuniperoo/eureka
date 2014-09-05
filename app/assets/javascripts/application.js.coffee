@@ -1,6 +1,5 @@
 #= require jquery_ujs
 #= require geoposition
-#= require google-maps
 #= require tile.stamen
 #= require handlebars
 #= require ember

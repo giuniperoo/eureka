@@ -1,6 +1,6 @@
-.sidebar
-  .heading
-    h1 Our locations
-  #listings.listings
+header
+  span YOLO MAPNOTE
 
-#map.map
+#live-geolocation
+#map.watercolor
+  .loader.fa.fa-circle-o-notch.fa-spin

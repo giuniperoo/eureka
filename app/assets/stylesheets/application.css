@@ -12,9 +12,8 @@
  *
 
  *= require normalize
+ *= require csspinner
 
  *= require_tree .
  *= require_self
  */
-
-.ember-application { margin: 20px; }
