@@ -11,6 +11,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'jquery-rails-cdn'
+gem 'autoprefixer-rails'
 
 gem 'ember-rails'
 gem 'ember-source'

@@ -1,6 +1,8 @@
 header
   span YOLO MAPNOTE
 
-#live-geolocation
 #map.watercolor
   .loader.fa.fa-circle-o-notch.fa-spin
+  .geolocation
+  .note
+    #epiceditor

@@ -12,7 +12,6 @@
  *
 
  *= require normalize
- *= require csspinner
 
  *= require_tree .
  *= require_self
