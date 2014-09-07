@@ -1,13 +1,15 @@
+@font-face {
+  font-family: 'Brandon';
+  src: url('/fonts/Brandon_light.otf');
+  font-weight: 400;
+}
+
 body {
-  /*font-family: Georgia, "Times New Roman", Times, serif;*/
-  line-height: 1.5;
-  font-size: 87.5%;
+  margin: 30px;
+  font-size: 20px;
   word-wrap: break-word;
-  margin: 2em;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font: 400 20px 'Brandon', 'Helvetica Neue', sans-serif;
+  line-height: 1.35em;
+  font-family: Brandon, 'Helvetica Neue', Helvetica, Arial;
 }
 
 h1,

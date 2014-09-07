@@ -5,6 +5,7 @@
 #= require handlebars
 #= require ember
 #= require ember-data
+#= require ember-localstorage-adapter
 #= require_self
 #= require app
 

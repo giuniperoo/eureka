@@ -7,9 +7,19 @@ App.IndexView = Em.View.extend({
           attributionControl: false,
           minZoom: 12
         }),
+
         layer = new L.StamenTileLayer('toner'),
-        marker = new L.Marker(new L.LatLng(position.coords.latitude, position.coords.longitude))
-            .bindPopup('You are here (more or less)'),
+
+        latlng = new L.LatLng(position.coords.latitude, position.coords.longitude),
+
+        icon = L.icon({
+          iconRetinaUrl: "<%= image_path('map-marker.png') %>",
+          clickable: false,
+          iconSize: [28.5, 42.5],
+          iconAnchor: [14.25, 42.5]
+        }),
+
+        marker = new L.Marker(latlng, {icon: icon}),
 
         finishLoading = function() {
           $('.loader').fadeOut();
@@ -21,6 +31,7 @@ App.IndexView = Em.View.extend({
               preview: '/preview.css',
               editor: '/editor.css'
             },
+            file: { defaultContent: "#Deja Vu\n\nhmm, I've been on this corner before.." },
             button: { fullscreen: false }
           }).load();
         };
