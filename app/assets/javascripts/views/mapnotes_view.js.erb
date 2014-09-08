@@ -1,4 +1,4 @@
-App.IndexView = Em.View.extend({
+App.MapnotesView = Em.View.extend({
   showMap: function(position) {
     var map = new L.Map('map', {
           center: new L.LatLng(position.coords.latitude, position.coords.longitude),
@@ -31,7 +31,7 @@ App.IndexView = Em.View.extend({
               preview: '/preview.css',
               editor: '/editor.css'
             },
-            file: { defaultContent: "#Deja Vu\n\nhmm, I've been on this corner before.." },
+            file: { defaultContent: "#Deja Vu\n---\nhmm, I've been on this corner before.." },
             button: { fullscreen: false }
           }).load();
         };

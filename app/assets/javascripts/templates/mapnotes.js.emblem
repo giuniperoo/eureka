@@ -1,7 +1,7 @@
 header
-  span YOLO MAPNOTE
+  span Mapnote
 
-#map.watercolor
+#map
   .loader.fa.fa-circle-o-notch.fa-spin
   .geolocation
   .note
