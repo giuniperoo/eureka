@@ -1,9 +1,4 @@
 header
-  span Mapnote
+  span Yolo Mapnote
 
-#map
-  .loader.fa.fa-circle-o-notch.fa-spin
-  .geolocation
-  .note
-    #epiceditor
-    .save-btn Save
+App.MapView id='map'
