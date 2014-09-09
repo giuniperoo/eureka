@@ -1,4 +1,6 @@
-.loader.fa.fa-circle-o-notch.fa-spin
 .geolocation
 
-App.NoteView
+if view.loading
+  .loader.fa.fa-circle-o-notch.fa-spin
+else
+  App.NoteView

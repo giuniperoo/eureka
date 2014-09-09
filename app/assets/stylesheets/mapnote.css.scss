@@ -84,6 +84,7 @@ header {
 .geolocation {
   top: 40%;
   left: 20px;
+  padding-right: 1px;
   position: absolute;
 }
 
@@ -91,7 +92,6 @@ header {
   font-size: 25px;
 
   &:after {
-    width: 25px;
     content: '\f119';
     margin-left: 8px;
     font-family: 'FontAwesome';
@@ -103,7 +103,6 @@ header {
   left: calc(50% - 15px);
   color: $ruddy;
   z-index: 1;
-  display: none;
   position: absolute;
   font-size: 30px;
 }

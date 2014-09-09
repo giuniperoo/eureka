@@ -1,0 +1,57 @@
+App.MapView = Em.View.extend
+  templateName: 'map'
+  loading: true
+
+  showMap: (position) ->
+    map = new L.Map('map',
+      center: new L.LatLng(position.coords.latitude, position.coords.longitude)
+      zoom: 16
+      minZoom: 12
+      zoomControl: false
+      attributionControl: false
+    )
+
+    layer = new L.StamenTileLayer 'watercolor'
+    latlng = new L.LatLng(position.coords.latitude, position.coords.longitude)
+    icon = L.icon(
+      iconRetinaUrl: "<%= image_path('map-marker.png') %>"
+      clickable: false
+      iconSize: [
+        28.5
+        42.5
+      ]
+      iconAnchor: [
+        14.25
+        42.5
+      ]
+    )
+
+    marker = new L.Marker(latlng,
+      icon: icon
+      draggable: true
+    )
+
+    finishLoading = ->
+      mapView = Ember.View.views['map']
+      mapView.set 'loading', false
+
+    map.addLayer layer
+    map.addLayer marker
+
+    offset = map.getSize().x * 0.333
+    map.panBy new L.Point(offset, 0),
+      animate: false
+
+    layer.on 'load', finishLoading
+
+  showMapError: (positionError) ->
+    $('.geolocation').html '<span class="no-location">Unable to determine your location.'
+    console.error 'Unable to determine location: ' + positionError.message
+    mapView = Ember.View.views['map']
+    mapView.set 'loading', false
+
+  didInsertElement: ->
+    if geoPosition.init()
+      geoPosition.getCurrentPosition @showMap, @showMapError
+    else
+      @showMapError()
