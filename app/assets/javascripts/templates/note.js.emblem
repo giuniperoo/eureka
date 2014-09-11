@@ -1,2 +1,2 @@
-textarea placeholder='Untitled'
-.save-btn Save
+Ember.TextArea placeholder='Untitled' value=text
+.save-btn{action 'createMapnote'} Save
