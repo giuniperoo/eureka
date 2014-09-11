@@ -4,16 +4,20 @@ App.NoteView = Em.View.extend
 
   displayNote: ->
     $('.note').addClass 'active'
-    editor = new EpicEditor(
-      theme:
-        base: '/base.css'
-        preview: '/preview.css'
-        editor: '/editor.css'
-      file:
-        defaultContent: "#Deja Vu\n---\nhmm, I've been on this corner before.."
-      button:
-        fullscreen: false
-    ).load()
+    $('textarea').focus()
+
+  # suppress two-finger map zoom event on note
+  bindScrolling: (opts)->
+    @.$().bind 'mousewheel DOMMouseScroll', {}, false
+
+  unbindScrolling: ->
+    @.$().unbind 'mousewheel DOMMouseScroll'
+
+  keyUp: ->
+    console.log @.$('textarea').val()
 
   didInsertElement: ->
     @displayNote()
+    @bindScrolling()
+
+  willDestroyElement: -> @unbindScrolling()

@@ -1,4 +1,6 @@
 header
   span Yolo Mapnote
 
-App.MapView id='map'
+outlet
+
+footer

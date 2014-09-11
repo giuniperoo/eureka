@@ -1,7 +1,6 @@
 #= require jquery_ujs
 #= require geoposition
 #= require tile.stamen
-#= require epiceditor
 #= require handlebars
 #= require ember
 #= require ember-data
