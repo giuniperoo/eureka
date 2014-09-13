@@ -1,9 +1,18 @@
 App.MapnoteController = Ember.ObjectController.extend
   text: ''
+  latitude: ''
+  longitute: ''
 
-  actions:
-    createMapnote: ->
-      @.get('model').set 'text', @text
-      @.get('model').set 'created', new Date()
-      @.get('model').set 'updated', new Date()
-      @.get('model').save()
+  textObserver: (->
+    Ember.run.debounce(this, @saveMapnote, 1000)
+  ).observes 'text'
+
+  saveMapnote: ->
+    model = @.get 'model'
+    model.set 'text', @text
+    model.set 'latitude', @latitude
+    model.set 'longitute', @longitute
+    model.set 'updated', new Date()
+    if model.get 'isNew'
+      model.set 'created', new Date()
+    model.save()

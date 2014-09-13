@@ -1,4 +1,4 @@
-App.NoteView = Em.View.extend
+App.NoteView = Ember.View.extend
   classNames: 'note'
   templateName: 'note'
 
@@ -12,9 +12,6 @@ App.NoteView = Em.View.extend
 
   unbindScrolling: ->
     @.$().unbind 'mousewheel DOMMouseScroll'
-
-  keyUp: ->
-    console.log @.$('textarea').val()
 
   didInsertElement: ->
     @displayNote()

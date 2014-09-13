@@ -1,8 +1,12 @@
-App.MapView = Em.View.extend
+App.MapView = Ember.View.extend
   templateName: 'map'
   loading: true
 
   showMap: (position) ->
+    controller = App.__container__.lookup('controller:mapnote')
+    controller.set 'latitude', position.coords.latitude
+    controller.set 'longitude', position.coords.longitude
+
     map = new L.Map('map',
       center: new L.LatLng(position.coords.latitude, position.coords.longitude)
       zoom: 16
