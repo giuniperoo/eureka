@@ -7,11 +7,12 @@ App.NoteView = Ember.View.extend
     $('textarea').focus()
 
   # suppress two-finger map zoom event on note
-  bindScrolling: (opts)->
-    @.$().bind 'mousewheel DOMMouseScroll', {}, false
+  bindScrolling: ->
+    @.$().on 'mousewheel DOMMouseScroll', (evt) ->
+      evt.stopPropagation()
 
   unbindScrolling: ->
-    @.$().unbind 'mousewheel DOMMouseScroll'
+    @.$().off 'mousewheel DOMMouseScroll'
 
   didInsertElement: ->
     @displayNote()

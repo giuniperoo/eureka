@@ -2,6 +2,7 @@
 #= require geoposition
 #= require tile.stamen
 #= require moment
+#= require clamp
 #= require handlebars
 #= require ember
 #= require ember-data

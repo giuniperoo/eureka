@@ -1,0 +1,2 @@
+p = mapnote.text
+p = time mapnote.created

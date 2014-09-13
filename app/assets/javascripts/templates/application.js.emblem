@@ -7,11 +7,4 @@ footer
   ul.mapnotes
     each
       unless this.isNew
-        li
-          this.text
-          br
-          this.latitude
-          br
-          this.longitude
-          br
-          = time this.created
+        mapnote-tile mapnote=this tagName='li'
