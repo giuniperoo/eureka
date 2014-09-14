@@ -3,10 +3,6 @@ App.MapnoteController = Ember.ObjectController.extend
   latitude: ''
   longitute: ''
 
-  textObserver: (->
-    Ember.run.debounce(this, @saveMapnote, 1000)
-  ).observes 'text'
-
   saveMapnote: ->
     model = @.get 'model'
     model.set 'text', @text

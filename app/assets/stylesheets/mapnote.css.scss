@@ -17,18 +17,23 @@ $brandon: 'Brandon', 'Helvetica Neue', Helvetica, Arial;
 
 /* animations */
 @keyframes markerdrop {
-  0%   { top: -70px; }
-  100% { top:   0px; }
+  from { top: -70px; }
+  to   { top:   0px; }
 }
 
 @keyframes noteslide {
-  0%   { right: -2000px; }
-  100% { right: 0px; }
+  from { right: -2000px; }
+  to   { right: 0px; }
 }
 
 @keyframes makeopaque {
-  0%   { background: rgba(255, 255, 255, 0.5); }
-  100% { background: rgba(255, 255, 255, 0.95); }
+  from { background: rgba(255, 255, 255, 0.5); }
+  to   { background: rgba(255, 255, 255, 0.95); }
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 
@@ -100,6 +105,7 @@ header {
 
 .no-location {
   font-size: 25px;
+  font-family: $brandon;
 
   &:after {
     content: '\f119';
@@ -173,6 +179,7 @@ textarea {
     min-width: 150px;
     background: white;
     vertical-align: top;
+    animation: fadein 0.4s 1;
 
     a {
       color: initial;

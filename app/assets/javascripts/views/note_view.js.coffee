@@ -5,6 +5,14 @@ App.NoteView = Ember.View.extend
     Ember.run.scheduleOnce 'afterRender', this, 'displayNote'
   ).observes('controller.model').on 'didInsertElement'
 
+  keyUp: ->
+    Ember.run.debounce this, 'compareText', 1000
+
+  compareText: ->
+    controller = @.get('controller')
+    if controller.get('.text') != controller.get('model.text')
+      controller.saveMapnote()
+
   displayNote: ->
     $('.note').addClass 'active'
     $('textarea').focus()
