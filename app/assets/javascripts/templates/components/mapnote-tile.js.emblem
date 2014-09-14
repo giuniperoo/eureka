@@ -1,2 +1,3 @@
-p = mapnote.text
-p = time mapnote.created
+link-to 'mapnote' mapnote
+  p {{mapnote.text}}
+  p {{time mapnote.created}}

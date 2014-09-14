@@ -1,10 +1,15 @@
 App.NoteView = Ember.View.extend
   classNames: 'note'
   templateName: 'note'
+  updateNote: (->
+    Ember.run.scheduleOnce 'afterRender', this, 'displayNote'
+  ).observes('controller.model').on 'didInsertElement'
 
   displayNote: ->
     $('.note').addClass 'active'
     $('textarea').focus()
+    unless @.get 'controller.model.isNew'
+      @.set('controller.text', @.get 'controller.model.text')
 
   # suppress two-finger map zoom event on note
   bindScrolling: ->
@@ -14,8 +19,6 @@ App.NoteView = Ember.View.extend
   unbindScrolling: ->
     @.$().off 'mousewheel DOMMouseScroll'
 
-  didInsertElement: ->
-    @displayNote()
-    @bindScrolling()
+  didInsertElement: -> @bindScrolling()
 
   willDestroyElement: -> @unbindScrolling()

@@ -1,61 +1,74 @@
 App.MapView = Ember.View.extend
   templateName: 'map'
   loading: true
+  map: null
+  updateMap: (->
+    Ember.run.scheduleOnce 'afterRender', this, 'getGeoposition'
+  ).observes('controller.model').on 'didInsertElement'
 
   showMap: (position) ->
-    controller = App.__container__.lookup('controller:mapnote')
+    finishLoading = => @.set 'loading', false
+
+    controller = @.get 'controller'
     controller.set 'latitude', position.coords.latitude
     controller.set 'longitude', position.coords.longitude
 
-    map = new L.Map('map',
-      center: new L.LatLng(position.coords.latitude, position.coords.longitude)
-      zoom: 16
-      minZoom: 12
-      zoomControl: false
-      attributionControl: false
-    )
+    @map.remove() if @map?
 
-    layer = new L.StamenTileLayer 'watercolor'
-    latlng = new L.LatLng(position.coords.latitude, position.coords.longitude)
-    icon = L.icon(
-      iconRetinaUrl: "<%= image_path('map-marker.png') %>"
-      clickable: false
-      iconSize: [
-        28.5
-        42.5
-      ]
-      iconAnchor: [
-        14.25
-        42.5
-      ]
-    )
+    try
+      @map = new L.Map('map',
+        center: new L.LatLng(position.coords.latitude, position.coords.longitude)
+        zoom: 16
+        minZoom: 12
+        zoomControl: false
+        attributionControl: false
+      )
 
-    marker = new L.Marker(latlng,
-      icon: icon
-      draggable: true
-    )
+      layer = new L.StamenTileLayer 'toner'
+      latlng = new L.LatLng(position.coords.latitude, position.coords.longitude)
+      icon = L.icon(
+        iconRetinaUrl: "<%= image_path('map-marker.png') %>"
+        clickable: false
+        iconSize: [
+          28.5
+          42.5
+        ]
+        iconAnchor: [
+          14.25
+          42.5
+        ]
+      )
 
-    finishLoading = ->
-      mapView = Ember.View.views['map']
-      mapView.set 'loading', false
+      marker = new L.Marker(latlng,
+        icon: icon
+        draggable: true
+      )
 
-    map.addLayer layer
-    map.addLayer marker
+      @map.addLayer layer
+      @map.addLayer marker
 
-    offset = map.getSize().x * 0.333
-    map.panBy new L.Point(offset, 0),
-      animate: false
+      offset = @map.getSize().x * 0.333
+      @map.panBy new L.Point(offset, 0),
+        animate: false
 
-    layer.on 'load', finishLoading
+      layer.on 'load', finishLoading
+    catch error
+      @showMapError()
 
   showMapError: (positionError) ->
+    @.set 'loading', false
     $('.geolocation').html '<span class="no-location">Unable to determine your location.'
-    console.error 'Unable to determine location: ' + positionError.message
-    mapView = Ember.View.views['map']
-    mapView.set 'loading', false
+    console.error('Unable to determine location: ' + positionError.message) if positionError
 
-  didInsertElement: ->
-    if geoPosition.init()
-      geoPosition.getCurrentPosition @showMap, @showMapError
+  getGeoposition: ->
+    if @.get 'controller.model.isNew'
+      if geoPosition.init()
+        geoPosition.getCurrentPosition @showMap.bind(this), @showMapError.bind(this)
+      else
+        @showMapError()
     else
-      @showMapError()
+      position =
+        coords:
+          latitude:  @.get 'controller.model.latitude'
+          longitude: @.get 'controller.model.longitude'
+      @showMap position

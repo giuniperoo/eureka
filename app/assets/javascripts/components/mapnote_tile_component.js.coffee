@@ -1,3 +1,3 @@
 App.MapnoteTileComponent = Ember.Component.extend
   didInsertElement: ->
-    $clamp @.$('p').get(0), {clamp: 3}
+    $clamp @.$('p').get(0), {clamp: 4}
