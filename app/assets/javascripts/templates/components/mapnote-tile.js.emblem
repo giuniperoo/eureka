@@ -1,3 +1,0 @@
-link-to 'mapnote' mapnote
-  p {{mapnote.text}}
-  p {{time mapnote.updated}}

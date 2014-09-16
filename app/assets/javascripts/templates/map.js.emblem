@@ -1,4 +1,4 @@
 .geolocation
 
-if view.loading
+if loading
   .loader.fa.fa-circle-o-notch.fa-spin

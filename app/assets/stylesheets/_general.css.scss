@@ -1,0 +1,97 @@
+/* colors */
+$ruddy:       #c27778;
+$grey:        #cccccc;
+$light-grey:  #f3f3f3;
+$clear-white: rgba(255, 255, 255, 0.3);
+
+
+/* fonts */
+@font-face {
+  font-family: 'Brandon';
+  src: font-url('Brandon_light.otf');
+  font-weight: 400;
+}
+
+$brandon: 'Brandon', 'Helvetica Neue', Helvetica, Arial;
+
+
+/* animations */
+@keyframes markerdrop {
+  from { top: -70px; }
+  to   { top:   0px; }
+}
+
+@keyframes noteslide {
+  from { right: -2000px; }
+  to   { right: 0px; }
+}
+
+@keyframes makeopaque {
+  from { background: rgba(255, 255, 255, 0.5); }
+  to   { background: rgba(255, 255, 255, 0.95); }
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+
+/* mixins */
+@mixin input-placeholder {
+  &.placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; }
+}
+
+
+/* pseudo selectors */
+%truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+/* page element styles */
+* { box-sizing: border-box; }
+
+body {
+  font: 400 2em $brandon;
+  background: image_url('satinweave.png');
+}
+
+.ember-application { margin: 0 20px; }
+
+header {
+  top: 2px;
+  display: inline;
+  position: relative;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 2.2;
+
+  span {
+    color: $clear-white;
+    text-shadow: -1px -1px $grey;
+    font-family: monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  &:before {
+    top: -70px;
+    left: 2px;
+    color: $clear-white;
+    content: '\f041';
+    position: relative;
+    font-family: 'FontAwesome';
+    text-shadow: -1px -1px $grey;
+    margin-right: 10px;
+
+    animation: markerdrop 0.2s 2s 1;
+    animation-fill-mode: forwards;
+  }
+}

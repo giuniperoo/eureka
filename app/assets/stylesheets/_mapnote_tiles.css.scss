@@ -1,0 +1,68 @@
+.mapnote-tiles {
+  margin: 25px 0;
+  padding-left: 0;
+
+  li {
+    width: calc(25% - 18.75px);
+    height: 150px;
+    cursor: pointer;
+    margin: 0 25px 25px 0;
+    border: 1px dashed $ruddy;
+    display: inline-block;
+    position: relative;
+    font-size: 18px;
+    min-width: 150px;
+    background: white;
+    vertical-align: top;
+    animation: fadein 0.4s 1;
+
+    a {
+      color: initial;
+      height: 100%;
+      display: block;
+      padding: 10px 0;
+      text-decoration: none;
+    }
+
+    p {
+      margin: 0;
+      padding: 0 10px;
+
+      &:nth-of-type(1) {
+        font-size: 0.95em;
+      }
+
+      &:nth-of-type(2) {
+        width: 100%;
+        color: white;
+        bottom: 0;
+        padding: 6px 10px;
+        position: absolute;
+        font-size: 0.75em;
+        font-weight: 600;
+        background-color: $ruddy;
+
+        .time { float: left; }
+        .date { float: right; }
+      }
+    }
+
+    .delete {
+      top: 5px;
+      right: 5px;
+      width: 30px;
+      color: $ruddy;
+      padding: 6px;
+      position: absolute;
+      text-align: center;
+      border-radius: 15px;
+
+      &:hover {
+        color: white;
+        background-color: $ruddy;
+      }
+    }
+
+    &:nth-of-type(4) { margin-right: 0; }
+  }
+}

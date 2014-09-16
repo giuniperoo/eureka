@@ -9,13 +9,16 @@ App.NoteView = Ember.View.extend
     Ember.run.debounce this, 'compareText', 1000
 
   compareText: ->
-    controller = @.get('controller')
-    if controller.get('.text') != controller.get('model.text')
+    controller = @.get 'controller'
+    uiText     = controller.get 'text'
+    modelText  = controller.get 'model.text'
+
+    if uiText != '' && uiText != modelText
       controller.saveMapnote()
 
   displayNote: ->
-    $('.note').addClass 'active'
-    $('textarea').focus()
+    @.$().addClass 'active'
+    @.$('textarea').focus()
     unless @.get 'controller.model.isNew'
       @.set('controller.text', @.get 'controller.model.text')
 

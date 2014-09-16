@@ -4,7 +4,7 @@ header
 outlet
 
 footer
-  ul.mapnotes
+  ul.mapnote-tiles
     each
       unless this.isNew
-        mapnote-tile mapnote=this tagName='li'
+        render 'mapnote-tile' this
