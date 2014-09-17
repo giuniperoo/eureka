@@ -1,4 +1,4 @@
 link-to 'mapnote' this
-  .delete.fa.fa-times click='delete'
+  .delete.fa.fa-times
   p {{this.text}}
   p {{time this.updated}}

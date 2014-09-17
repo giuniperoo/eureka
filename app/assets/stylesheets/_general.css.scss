@@ -16,24 +16,29 @@ $brandon: 'Brandon', 'Helvetica Neue', Helvetica, Arial;
 
 
 /* animations */
-@keyframes markerdrop {
+@keyframes drop-marker {
   from { top: -70px; }
   to   { top:   0px; }
 }
 
-@keyframes noteslide {
-  from { right: -2000px; }
-  to   { right: 0px; }
-}
-
-@keyframes makeopaque {
-  from { background: rgba(255, 255, 255, 0.5); }
-  to   { background: rgba(255, 255, 255, 0.95); }
-}
-
-@keyframes fadein {
+@keyframes fade-in {
   from { opacity: 0; }
   to   { opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes slide-left {
+  from { right: -2000px; }
+  to   { right:     0px; }
+}
+
+@keyframes make-opaque {
+  from { background: rgba(255, 255, 255, 0.5 ); }
+  to   { background: rgba(255, 255, 255, 0.95); }
 }
 
 
@@ -44,14 +49,6 @@ $brandon: 'Brandon', 'Helvetica Neue', Helvetica, Arial;
   &::-moz-placeholder { @content; }
   &:-ms-input-placeholder { @content; }
   &::-webkit-input-placeholder { @content; }
-}
-
-
-/* pseudo selectors */
-%truncate {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 
@@ -91,7 +88,6 @@ header {
     text-shadow: -1px -1px $grey;
     margin-right: 10px;
 
-    animation: markerdrop 0.2s 2s 1;
-    animation-fill-mode: forwards;
+    animation: drop-marker 0.2s 2s 1 forwards;
   }
 }

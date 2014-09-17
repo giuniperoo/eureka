@@ -1,4 +1,5 @@
 .mapnote-editor {
+  overflow: hidden;
   position: relative;
   border: 1px dashed $ruddy;
 }
@@ -41,9 +42,8 @@
 
   &.active {
     animation:
-      noteslide 0.4s 0.6s 1,
-      makeopaque 0.6s 1s 1;
-    animation-fill-mode: forwards;
+      slide-left 0.4s 0.2s 1 forwards,
+      make-opaque 0.6s 0.6s 1 forwards;
   }
 }
 
@@ -67,5 +67,21 @@ textarea {
 
   @include input-placeholder {
     font-style: italic;
+  }
+}
+
+.note-slider {
+  top: -43px;
+  left: 10px;
+  color: $ruddy;
+  cursor: pointer;
+  position: relative;
+  transition: 0.2s;
+
+  &.left { display: none; }
+
+  &:hover,
+  &:focus {
+    transform: scale(1.2);
   }
 }

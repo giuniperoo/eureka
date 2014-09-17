@@ -1,4 +1,5 @@
 #= require jquery_ujs
+#= require jquery.transit
 #= require geoposition
 #= require tile.stamen
 #= require moment
