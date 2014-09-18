@@ -7,4 +7,5 @@ footer
   ul.mapnote-tiles
     each
       unless this.isNew
-        render 'mapnote-tile' this
+        unless this.isEmpty
+          render 'mapnote-tile' this

@@ -17,25 +17,24 @@ App.NoteView = Ember.View.extend
       controller.saveMapnote()
 
   initializeNote: ->
+    @.$().addClass 'init'
     @.$().addClass 'active'
+    @.$('textarea').val ''
     @.$('textarea').focus()
     unless @.get 'controller.model.isNew'
       @.set('controller.text', @.get 'controller.model.text')
 
   displayNote: ->
+    @.$().addClass 'active'
     @.$().transition
       x: 0
-    @.$('.note-slider.left').hide()
-    @.$('.note-slider.right').css
-      display: 'inline-block'
 
   hideNote: ->
+    @.$().removeClass 'active'
+
     offset = @.$().width() - 40
     @.$().transition
       x: offset
-    @.$('.note-slider.right').hide()
-    @.$('.note-slider.left').css
-      display: 'inline-block'
 
   click: (evt)->
     if $(evt.target).is '.note-slider'
@@ -43,15 +42,3 @@ App.NoteView = Ember.View.extend
         @hideNote()
       else
         @displayNote()
-
-  # suppress two-finger map zoom event on note
-  bindScrolling: ->
-    @.$().on 'mousewheel DOMMouseScroll', (evt) ->
-      evt.stopPropagation()
-
-  unbindScrolling: ->
-    @.$().off 'mousewheel DOMMouseScroll'
-
-  didInsertElement: -> @bindScrolling()
-
-  willDestroyElement: -> @unbindScrolling()

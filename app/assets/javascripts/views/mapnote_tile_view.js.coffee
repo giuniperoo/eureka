@@ -2,13 +2,17 @@ App.MapnoteTileView = Ember.View.extend
   tagName: 'li'
   templateName: 'mapnote-tile'
 
-  removeRecord: ->
-    @.get('controller.model').destroyRecord()
+  removeMapnoteTile: ->
+    @.$().addClass 'hidden'
+    setTimeout (=>
+      model = @controller.model
+      model.destroyRecord()
+      @controller.rerouteIfCurrent model.id
+    ), 400
 
   click: (evt)->
     if $(evt.target).is '.delete'
-      @.$().addClass 'hidden'
-      setTimeout (=> @removeRecord()), 400
+      @removeMapnoteTile()
 
   didInsertElement: ->
     $clamp @.$('p').get(0), {clamp: 4}

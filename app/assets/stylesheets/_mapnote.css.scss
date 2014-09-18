@@ -40,10 +40,16 @@
   position: absolute;
   background: rgba(255, 255, 255, 0.5);
 
-  &.active {
+  &.init {
     animation:
       slide-left 0.4s 0.2s 1 forwards,
       make-opaque 0.6s 0.6s 1 forwards;
+  }
+
+  &.active {
+    .note-slider.left  { display: none; }
+    .note-slider.right { display: inline-block; }
+    textarea { opacity: 1; }
   }
 }
 
@@ -59,11 +65,14 @@ textarea {
   height: 100%;
   border: 0;
   resize: none;
+  opacity: 0;
   outline: none;
   padding: 30px;
   font-size: 22px;
   font-family: $brandon;
   background-color: transparent;
+  transition: opacity 0.3s;
+
 
   @include input-placeholder {
     font-style: italic;
@@ -78,7 +87,8 @@ textarea {
   position: relative;
   transition: 0.2s;
 
-  &.left { display: none; }
+  &.left  { display: inline-block; }
+  &.right { display: none; }
 
   &:hover,
   &:focus {
