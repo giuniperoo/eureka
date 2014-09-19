@@ -9,16 +9,11 @@ App.MapnoteController = Ember.ObjectController.extend
     @.set 'model', model
 
   saveMapnote: ->
-    model = @.get 'model'
+    @initializeMapnote() if @model.get 'isDeleted'
 
-    if model.get 'isDeleted'
-      @initializeMapnote()
-      model = @.get 'model'
-
-    model.set 'text', @text
-    model.set 'latitude', @latitude
-    model.set 'longitude', @longitude
-    model.set 'updated', new Date()
-    if model.get 'isNew'
-      model.set 'created', new Date()
-    model.save()
+    @model.set 'text', @text
+    @model.set 'latitude', @latitude
+    @model.set 'longitude', @longitude
+    @model.set 'updated', new Date()
+    @model.set 'created', new Date() if @model.get 'isNew'
+    @model.save()

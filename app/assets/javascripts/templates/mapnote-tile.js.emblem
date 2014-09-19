@@ -1,4 +1,4 @@
 link-to 'mapnote' this
-  .delete.fa.fa-times
+  .delete.fa.fa-times{action 'removeMapnote' bubbles=false}
   p {{this.text}}
   p {{time this.updated}}
