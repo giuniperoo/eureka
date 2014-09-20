@@ -1,0 +1,29 @@
+%rotating-dashed {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  position: relative;
+
+  .dashing {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    &:nth-of-type(1) { transform: rotate(0deg); }
+    &:nth-of-type(2) { transform: rotate(90deg);
+                           right: calc(-50% + 75px); }
+    &:nth-of-type(3) { transform: rotate(180deg); }
+    &:nth-of-type(4) { transform: rotate(270deg);
+                            left: calc(-50% + 75px); }
+
+    i {
+      width: 200%;
+      position: absolute;
+      border-bottom: 1px dashed $ruddy;
+    }
+  }
+
+  &:hover .dashing i {
+    animation: slide-dash 30s infinite linear;
+  }
+}

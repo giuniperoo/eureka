@@ -4,12 +4,8 @@
 
   li {
     width: calc(25% - 18.75px);
-    height: 150px;
-    cursor: pointer;
     margin: 0 25px 25px 0;
-    border: 1px dashed $ruddy;
     display: inline-block;
-    position: relative;
     font-size: 18px;
     min-width: 150px;
     animation: fade-in 0.6s 1;
@@ -22,18 +18,20 @@
 
     a {
       color: initial;
-      height: 100%;
+      cursor: pointer;
       display: block;
-      padding: 10px 0;
       text-decoration: none;
+
+      @extend %rotating-dashed;
     }
 
     p {
       margin: 0;
-      padding: 0 10px;
 
       &:nth-of-type(1) {
         font-size: 0.95em;
+        padding: 12px 12px 0;
+        word-wrap: break-word;
       }
 
       &:nth-of-type(2) {

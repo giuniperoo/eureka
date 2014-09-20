@@ -1,4 +1,7 @@
 link-to 'mapnote' this
+  times 4
+    span.dashing: i
+
   .delete.fa.fa-times{action 'removeMapnote' bubbles=false}
   p {{this.text}}
   p {{time this.updated}}
