@@ -32,7 +32,7 @@ App.NoteView = Ember.View.extend
   hideNote: ->
     @.$().removeClass 'active'
 
-    offset = @.$().width() - 40
+    offset = @.$().width() + 20
     @.$().transition
       x: offset
 
