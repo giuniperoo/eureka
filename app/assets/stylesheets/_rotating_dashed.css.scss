@@ -1,6 +1,5 @@
 %rotating-dashed {
-  width: 100%;
-  height: 150px;
+  height: 100%;
   overflow: hidden;
   position: relative;
 
@@ -23,7 +22,7 @@
     }
   }
 
-  &:hover .dashing i {
+  &.active .dashing i {
     animation: slide-dash 30s infinite linear;
   }
 }

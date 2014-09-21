@@ -28,6 +28,7 @@ App.NoteView = Ember.View.extend
     @.$().addClass 'active'
     @.$().transition
       x: 0
+    , 300
 
   hideNote: ->
     @.$().removeClass 'active'
@@ -35,6 +36,7 @@ App.NoteView = Ember.View.extend
     offset = @.$().width() + 20
     @.$().transition
       x: offset
+    , 300
 
   click: (evt)->
     if $(evt.target).is '.note-slider'
