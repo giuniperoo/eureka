@@ -2,6 +2,9 @@ link-to 'mapnote' this
   times 4
     span.dashing: i
 
-  .delete.fa.fa-times{action 'removeMapnote' bubbles=false}
+  .delete.fa.fa-times
   p {{this.text}}
   p {{time this.updated}}
+
+.confirm{action 'removeMapnote' bubbles=false}
+  | Tap again to delete
