@@ -21,5 +21,8 @@ module Eureka
     # config.i18n.default_locale = :de
 
     config.assets.precompile += ['jquery.js']
+
+    # enable gzip compression
+    config.middleware.use Rack::Deflater
   end
 end
