@@ -1,5 +1,6 @@
 App.MapnoteTileController = Ember.ObjectController.extend
   needs: ['mapnote']
+  isActive: Ember.computed.alias 'active'
 
   rerouteIfCurrent: (mapnoteId)->
     mapnoteController = @.get 'controllers.mapnote'

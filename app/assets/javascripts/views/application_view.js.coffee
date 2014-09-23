@@ -1,4 +1,2 @@
 App.ApplicationView = Ember.View.extend
-
-  click: ->
-    $('.mapnote-tiles .confirm').fadeOut()
+  click: -> $('.mapnote-tiles .confirm').fadeOut()

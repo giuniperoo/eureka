@@ -1,4 +1,4 @@
-link-to 'mapnote' this
+link-to 'mapnote' this classNameBindings='isActive:active'
   times 4
     span.dashing: i
 

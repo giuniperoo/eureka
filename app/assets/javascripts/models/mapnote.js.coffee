@@ -4,3 +4,5 @@ App.Mapnote = DS.Model.extend
   longitude:  DS.attr 'string'
   created:    DS.attr 'date'
   updated:    DS.attr 'date'
+
+  didCreate: -> @.set 'active', true
