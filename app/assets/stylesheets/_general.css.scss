@@ -41,9 +41,19 @@ $brandon: 'Brandon', 'Helvetica Neue', Helvetica, Arial;
   to   { background: rgba(255, 255, 255, 0.95); }
 }
 
-@keyframes slide-dash {
+@keyframes slide-dash-top {
   from { transform: translateX(-50%); }
   to   { transform: translateX(  0%); }
+}
+
+@keyframes slide-dash-left {
+  from { transform: translateY(  0%); }
+  to   { transform: translateY(-50%); }
+}
+
+@keyframes slide-dash-right {
+  from { transform: translateY(-50%); }
+  to   { transform: translateY(  0%); }
 }
 
 
