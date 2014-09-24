@@ -1,57 +1,77 @@
 App.MapView = Ember.View.extend
   templateName: 'map'
   map: null
+  marker: null
+  tileLayer: null
+
   updateMap: (->
     Ember.run.scheduleOnce 'afterRender', this, 'getGeoposition'
   ).observes('controller.model').on 'didInsertElement'
 
-  showMap: (position) ->
-    finishLoading = =>
-      @.set 'controller.loading', false
+  finishLoading: ->
+    @.set 'controller.loading', false
 
+  prepareTileLayer: ->
+    @tileLayer = new L.StamenTileLayer 'toner'
+    @tileLayer.on 'load', @finishLoading.bind(this)
+
+  prepareMarker: (latLng)->
+    icon = L.icon
+      iconRetinaUrl: "<%= image_path('map-marker.png') %>"
+      clickable: false
+      iconSize: [
+        28.5
+        42.5
+      ]
+      iconAnchor: [
+        14.25
+        42.5
+      ]
+
+    @marker = new L.Marker latLng,
+      icon: icon
+      draggable: true
+
+    recordPosition = (evt)->
+      latLng = evt.target.getLatLng()
+      @setLatLng latLng.lat, latLng.lng
+      controller = @.get 'controller'
+      controller.saveMapnote()
+
+    @marker.on 'dragend', recordPosition.bind(this)
+
+  setLatLng: (latitude, longitude)->
     controller = @.get 'controller'
-    controller.set 'latitude', position.coords.latitude
-    controller.set 'longitude', position.coords.longitude
+    controller.set 'latitude', latitude
+    controller.set 'longitude', longitude
 
+  showMap: (position) ->
     @map.remove() if @map?
 
     try
-      @map = new L.Map('map',
-        center: new L.LatLng(position.coords.latitude, position.coords.longitude)
+      latitude  = position.coords.latitude
+      longitude = position.coords.longitude
+      @setLatLng latitude, longitude
+
+      latLng = new L.LatLng latitude, longitude
+
+      @map = new L.Map 'map',
+        center: latLng
         zoom: 16
         minZoom: 12
         zoomControl: false
         attributionControl: false
-      )
 
-      layer = new L.StamenTileLayer 'toner'
-      latlng = new L.LatLng(position.coords.latitude, position.coords.longitude)
-      icon = L.icon(
-        iconRetinaUrl: "<%= image_path('map-marker.png') %>"
-        clickable: false
-        iconSize: [
-          28.5
-          42.5
-        ]
-        iconAnchor: [
-          14.25
-          42.5
-        ]
-      )
+      @prepareTileLayer()
+      @prepareMarker(latLng)
 
-      marker = new L.Marker(latlng,
-        icon: icon
-        draggable: true
-      )
-
-      @map.addLayer layer
-      @map.addLayer marker
+      @map.addLayer @tileLayer
+      @map.addLayer @marker
 
       offset = @map.getSize().x * 0.333
       @map.panBy new L.Point(offset, 0),
         animate: false
 
-      layer.on 'load', finishLoading
     catch error
       @showMapError()
 
