@@ -91,6 +91,8 @@ header {
     font-family: monospace;
     letter-spacing: 1px;
     text-transform: uppercase;
+
+    &:first-of-type { margin-right: 0.4em; }
   }
 
   &:before {
@@ -101,7 +103,7 @@ header {
     position: relative;
     font-family: 'FontAwesome';
     text-shadow: -1px -1px $grey;
-    margin-right: 15px;
+    margin-right: 0.4em;
 
     animation: drop-marker 0.2s 2s 1 forwards;
   }

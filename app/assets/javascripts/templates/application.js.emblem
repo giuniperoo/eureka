@@ -1,5 +1,6 @@
 header
-  span Yolo Mapnote
+  span Yolo
+  span Mapnote
 
 outlet
 
