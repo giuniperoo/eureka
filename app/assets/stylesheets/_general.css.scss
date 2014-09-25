@@ -67,7 +67,7 @@ $brandon: 'Brandon', 'Helvetica Neue', Helvetica, Arial;
 }
 
 
-/* page element styles */
+/* general page element styles */
 * { box-sizing: border-box; }
 
 body {
@@ -76,35 +76,3 @@ body {
 }
 
 .ember-application { margin: 0 20px; }
-
-header {
-  top: 2px;
-  display: inline;
-  position: relative;
-  font-size: 30px;
-  font-weight: 400;
-  line-height: 2.2;
-
-  span {
-    color: $clear-white;
-    text-shadow: -1px -1px $grey;
-    font-family: monospace;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-
-    &:first-of-type { margin-right: 0.4em; }
-  }
-
-  &:before {
-    top: -70px;
-    left: 2px;
-    color: $clear-white;
-    content: '\f041';
-    position: relative;
-    font-family: 'FontAwesome';
-    text-shadow: -1px -1px $grey;
-    margin-right: 0.4em;
-
-    animation: drop-marker 0.2s 2s 1 forwards;
-  }
-}
