@@ -14,23 +14,18 @@ App.MapView = Ember.View.extend
   prepareTileLayer: ->
     @tileLayer = new L.StamenTileLayer 'toner'
     @tileLayer.on 'load', @finishLoading.bind(this)
+    @map.addLayer @tileLayer
 
   prepareMarker: (latLng)->
     icon = L.icon
       iconRetinaUrl: "<%= image_path('map-marker.png') %>"
       clickable: false
-      iconSize: [
-        28.5
-        42.5
-      ]
-      iconAnchor: [
-        14.25
-        42.5
-      ]
-
+      iconSize: [28.5, 42.5]
+      iconAnchor: [14.25, 42.5]
     @marker = new L.Marker latLng,
       icon: icon
       draggable: true
+    @map.addLayer @marker
 
     recordPosition = (evt)->
       latLng = evt.target.getLatLng()
@@ -40,10 +35,25 @@ App.MapView = Ember.View.extend
 
     @marker.on 'dragend', recordPosition.bind(this)
 
+  setZoom: (numberOrEvent)->
+    controller = @.get 'controller'
+    if typeof numberOrEvent == 'object'
+      zoom = numberOrEvent.target.getZoom()
+      controller.set 'zoom', zoom
+      controller.saveMapnote()
+    else
+      zoom = numberOrEvent
+      controller.set 'zoom', zoom
+
   setLatLng: (latitude, longitude)->
     controller = @.get 'controller'
     controller.set 'latitude', latitude
     controller.set 'longitude', longitude
+
+  offsetMap: ->
+    offset = @map.getSize().x * 0.333
+    @map.panBy new L.Point(offset, 0),
+      animate: false
 
   showMap: (position) ->
     @map.remove() if @map?
@@ -51,26 +61,26 @@ App.MapView = Ember.View.extend
     try
       latitude  = position.coords.latitude
       longitude = position.coords.longitude
-      @setLatLng latitude, longitude
 
       latLng = new L.LatLng latitude, longitude
+      @setLatLng latitude, longitude
+
+      zoom = position.zoom || 16
+      @setZoom(zoom)
 
       @map = new L.Map 'map',
         center: latLng
-        zoom: 16
+        zoom: zoom
         minZoom: 12
         zoomControl: false
         attributionControl: false
 
+      @map.on 'zoomend', @setZoom.bind(this)
+
       @prepareTileLayer()
       @prepareMarker(latLng)
 
-      @map.addLayer @tileLayer
-      @map.addLayer @marker
-
-      offset = @map.getSize().x * 0.333
-      @map.panBy new L.Point(offset, 0),
-        animate: false
+      @offsetMap()
 
     catch error
       @showMapError()
@@ -91,4 +101,5 @@ App.MapView = Ember.View.extend
         coords:
           latitude:  @.get 'controller.model.latitude'
           longitude: @.get 'controller.model.longitude'
+        zoom: @.get 'controller.model.zoom'
       @showMap position

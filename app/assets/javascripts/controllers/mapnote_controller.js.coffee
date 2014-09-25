@@ -1,5 +1,6 @@
 App.MapnoteController = Ember.ObjectController.extend
   text: ''
+  zoom: ''
   latitude: ''
   longitude: ''
   loading: true
@@ -12,6 +13,7 @@ App.MapnoteController = Ember.ObjectController.extend
     @initializeMapnote() if @model.get 'isDeleted'
 
     @model.set 'text', @text
+    @model.set 'zoom', @zoom
     @model.set 'latitude', @latitude
     @model.set 'longitude', @longitude
     @model.set 'updated', new Date()
