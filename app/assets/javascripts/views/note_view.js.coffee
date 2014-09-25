@@ -17,12 +17,16 @@ App.NoteView = Ember.View.extend
       controller.saveMapnote()
 
   initializeNote: ->
-    @.$().addClass 'init'
-    @.$().addClass 'active'
-    @.$('textarea').val ''
-    @.$('textarea').focus()
-    unless @.get 'controller.model.isNew'
+    if @.get 'controller.model.isNew'
+      @.$('textarea').val ''
+    else
       @.set('controller.text', @.get 'controller.model.text')
+
+    @.$('textarea').focus() if @.$().hasClass 'active'
+
+    unless @.$().hasClass('init')
+      @.$().addClass 'init'
+      @.$().addClass 'active'
 
   displayNote: ->
     @.$().addClass 'active'
