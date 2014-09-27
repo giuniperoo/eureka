@@ -3,16 +3,23 @@ App.ConfigView = Ember.View.extend
   isVisible: Ember.computed.alias 'controller.active'
   classNameBindings: 'isVisible'
 
-  hideConfig: (evt)->
+  hideConfigOnEsc: (evt)->
     if evt.keyCode == 27
-      @.$().addClass 'fade-out'
-      Ember.run.later this, ->
-        @.set 'isVisible', false
-        @.$().removeClass 'fade-out'
-      , 300
+      @hideConfig evt
+
+  hideConfig: (evt)->
+    @.$().addClass 'fade-out'
+    Ember.run.later this, ->
+      @.set 'isVisible', false
+      @.$().removeClass 'fade-out'
+    , 300
+
+  click: (evt)->
+    if $(evt.target).is '.close'
+      @hideConfig evt
 
   didInsertElement: ->
-    $(document).on 'keyup', @hideConfig.bind(this)
+    $(document).on 'keyup', @hideConfigOnEsc.bind(this)
 
   willDestroyElement: ->
-    $(document).off 'keyup', @hideConfig.bind(this)
+    $(document).off 'keyup', @hideConfigOnEsc.bind(this)
