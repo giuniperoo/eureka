@@ -22,11 +22,11 @@ App.NoteView = Ember.View.extend
     else
       @.set('controller.text', @.get 'controller.model.text')
 
-    @.$('textarea').focus() if @.$().hasClass 'active'
-
     unless @.$().hasClass('init')
       @.$().addClass 'init'
       @.$().addClass 'active'
+
+    @.$('textarea').focus() if @.$().hasClass 'active'
 
   displayNote: ->
     @.$().addClass 'active'

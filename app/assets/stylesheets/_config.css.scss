@@ -5,9 +5,17 @@
   bottom: 0;
   opacity: 0;
   z-index: 1;
+  padding: 66px 20px;
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.2);
 
   &.is-visible { animation: fade-in 0.3s 1 forwards; }
   &.fade-out   { animation: fade-out 0.3s 1 forwards; }
 }
+
+.config-settings {
+  @extend %main-panel;
+  background-color: whitesmoke;
+}
+
+.close { @extend %close-button; }

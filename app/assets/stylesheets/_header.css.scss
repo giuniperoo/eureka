@@ -3,7 +3,7 @@ header {
   position: relative;
   font-size: 30px;
   font-weight: 400;
-  line-height: 2.2;
+  line-height: 65px;
 
   span {
     color: $clear-white;
@@ -16,7 +16,6 @@ header {
   }
 
   &:before {
-    top: -70px;
     left: 2px;
     color: $clear-white;
     content: '\f041';
@@ -24,8 +23,6 @@ header {
     font-family: 'FontAwesome';
     text-shadow: -1px -1px $grey;
     margin-right: 0.4em;
-
-    animation: drop-marker 0.2s 2s 1 forwards;
   }
 
   .config {

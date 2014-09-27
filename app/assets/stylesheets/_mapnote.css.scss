@@ -1,14 +1,4 @@
-.mapnote-editor {
-  overflow: hidden;
-  position: relative;
-  border: 1px dashed $ruddy;
-
-  &:after {
-    padding-top: 32.5%;
-    display: block;
-    content: '';
-  }
-}
+.mapnote-editor { @extend %main-panel; }
 
 .geolocation {
   top: 40%;

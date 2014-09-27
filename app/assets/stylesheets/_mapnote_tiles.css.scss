@@ -52,12 +52,7 @@
     }
 
     .delete {
-      top: 7px;
-      right: 10px;
-      color: $ruddy;
-      position: absolute;
-      transition: 0.2s;
-
+      @extend %close-button;
       &:hover,
       &:focus {
         transform: scale(1.5);

@@ -16,11 +16,6 @@ $brandon: 'Brandon', 'Helvetica Neue', Helvetica, Arial;
 
 
 /* animations */
-@keyframes drop-marker {
-  from { top: -70px; }
-  to   { top:   0px; }
-}
-
 @keyframes fade-in {
   from { opacity: 0; }
   to   { opacity: 1; }
@@ -76,3 +71,31 @@ body {
 }
 
 .ember-application { margin: 0 20px; }
+
+
+/* reusable placeholder selectors */
+%main-panel {
+  overflow: hidden;
+  position: relative;
+  border: 1px dashed $ruddy;
+
+  &:after {
+    padding-top: 32.5%;
+    display: block;
+    content: '';
+  }
+}
+
+%close-button {
+  top: 7px;
+  right: 10px;
+  color: $ruddy;
+  cursor: pointer;
+  position: absolute;
+  transition: 0.2s;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.2);
+  }
+}
