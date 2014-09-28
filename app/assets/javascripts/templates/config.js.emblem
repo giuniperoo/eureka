@@ -4,3 +4,44 @@ section.config-settings
     li.map-menu-item.active map
     li.note-menu-item note
     li.note-menu-item about
+  ul.maps
+    li.toner
+      | toner
+      .sample
+      p.attribution
+        ' Map tiles by
+        a href='http://stamen.com/' Stamen Design
+        ' , under
+        a href="http://creativecommons.org/licenses/by/3.0" CC BY 3.0
+        ' . Data by
+        a href="http://openstreetmap.org" OpenStreetMap
+        ' , under
+        a href="http://www.openstreetmap.org/copyright" ODbL
+        | .
+      .radio-select.fa.fa-circle
+
+    li.watercolor
+      | watercolor
+      .sample
+      p.attribution
+        ' Map tiles by
+        a href='http://stamen.com/' Stamen Design
+        ' , under
+        a href="http://creativecommons.org/licenses/by/3.0" CC BY 3.0
+        ' . Data by
+        a href="http://openstreetmap.org" OpenStreetMap
+        ' , under
+        a href="http://www.openstreetmap.org/copyright" ODbL
+        | .
+      .radio-select.fa.fa-circle-thin
+
+    li.natural
+      | natural
+      .sample
+      p.attribution
+        ' Map tiles by
+        a href='https://www.mapbox.com/about/maps/' Mapbox
+        ' . Data by
+        a href="http://openstreetmap.org" OpenStreetMap
+        | .
+      .radio-select.fa.fa-circle-thin
