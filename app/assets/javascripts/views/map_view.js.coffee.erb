@@ -67,6 +67,11 @@ App.MapView = Ember.View.extend
       zoom = position.zoom || 16
       @setZoom(zoom)
 
+      # # Provide your access token
+      # L.mapbox.accessToken = 'pk.eyJ1IjoiZ2l1bmlwZXJvbyIsImEiOiJ5QldHbVlvIn0.gBOtqy71Pjhf2gwVsTnP9A'
+      # # Create a map in the div #map
+      # @map = L.mapbox.map 'map', 'giuniperoo.jkdeo2f5'
+
       @map = new L.Map 'map',
         center: latLng
         zoom: zoom

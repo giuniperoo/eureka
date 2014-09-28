@@ -9,7 +9,7 @@ $clear-white: rgba(255, 255, 255, 0.3);
 @font-face {
   font-family: 'Brandon';
   src: font-url('Brandon_light.otf');
-  font-weight: 400;
+  font-weight: normal;
 }
 
 $brandon: 'Brandon', 'Helvetica Neue', Helvetica, Arial;
@@ -75,9 +75,10 @@ body {
 
 /* reusable placeholder selectors */
 %main-panel {
+  border: 1px dashed $ruddy;
   overflow: hidden;
   position: relative;
-  border: 1px dashed $ruddy;
+  min-height: 150px;
 
   &:after {
     padding-top: 32.5%;

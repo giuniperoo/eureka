@@ -1,2 +1,6 @@
 section.config-settings
   .close.fa.fa-times
+  ul.config-menu
+    li.map-menu-item.active map
+    li.note-menu-item note
+    li.note-menu-item about

@@ -19,3 +19,49 @@
 }
 
 .close { @extend %close-button; }
+
+.config-menu {
+  width: 15%;
+  margin: 0;
+  height: 100%;
+  padding: 10px;
+  position: absolute;
+  min-width: 115px;
+  background: $ruddy;
+
+  li {
+    color: white;
+    margin: 10px;
+    cursor: pointer;
+    padding: 1px;
+    position: relative;
+    font-size: 0.6em;
+    list-style: none;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    &.active {
+      width: 100%;
+      cursor: default;
+      border-top: 1px solid white;
+      border-bottom: 1px solid white;
+
+      &:after {
+        top: 4px;
+        right: 0;
+        width: 0;
+        height: 0;
+        content: '';
+        position: absolute;
+        border-top: 10px solid transparent;
+        border-right: 10px solid whitesmoke;
+        border-bottom: 10px solid transparent;
+      }
+    }
+
+    &:last-of-type {
+      bottom: 0;
+      position: absolute;
+    }
+  }
+}
