@@ -6,4 +6,4 @@ App.ApplicationController = Ember.ArrayController.extend
   actions:
     displayConfig: ->
       configController = @.get 'controllers.config'
-      configController.set 'active', !configController.get 'active'
+      configController.set 'active', true

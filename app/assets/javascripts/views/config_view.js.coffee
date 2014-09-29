@@ -14,8 +14,16 @@ App.ConfigView = Ember.View.extend
       @.$().removeClass 'fade-out'
     , 300
 
+  preventScroll: (->
+    if @.get 'isVisible'
+      window.scrollTo 0, 0
+      $('body').css 'overflow', 'hidden'
+    else
+      $('body').css 'overflow', 'initial'
+  ).observes 'isVisible'
+
   click: (evt)->
-    if $(evt.target).is '.close'
+    if $(evt.target).is '.close, .overlay'
       @hideConfig evt
 
   didInsertElement: ->

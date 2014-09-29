@@ -25,6 +25,11 @@
       text-decoration: none;
 
       @extend %rotating-dashed;
+
+      &:focus {
+        outline: 3px dashed $ruddy;
+        .dashing { display: none; }
+      }
     }
 
     p {

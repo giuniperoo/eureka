@@ -1,5 +1,5 @@
 link-to 'mapnote' this classNameBindings='isActive:active'
-  times 4
+  times 3
     span.dashing: i
 
   .delete.fa.fa-times
