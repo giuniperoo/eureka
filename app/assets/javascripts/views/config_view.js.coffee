@@ -3,6 +3,17 @@ App.ConfigView = Ember.View.extend
   isVisible: Ember.computed.alias 'controller.active'
   classNameBindings: 'isVisible'
 
+  fadeInMapSamples: (->
+    Ember.run.scheduleOnce 'afterRender', this, '_fadeInMapSamples'
+  ).on 'didInsertElement'
+
+  _fadeInMapSamples: ->
+    @.$('.lazy').lazyload(
+      effect: 'fadeIn'
+      effectspeed: 300
+      event: 'load'
+    ).trigger 'load'
+
   hideConfigOnEsc: (evt)->
     if evt.keyCode == 27
       @hideConfig evt
@@ -28,9 +39,6 @@ App.ConfigView = Ember.View.extend
 
   didInsertElement: ->
     $(document).on 'keyup', @hideConfigOnEsc.bind(this)
-
-    @.$('img').lazyload
-      effect: 'fadein'
 
   willDestroyElement: ->
     $(document).off 'keyup', @hideConfigOnEsc.bind(this)
