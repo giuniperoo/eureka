@@ -29,5 +29,8 @@ App.ConfigView = Ember.View.extend
   didInsertElement: ->
     $(document).on 'keyup', @hideConfigOnEsc.bind(this)
 
+    @.$('img').lazyload
+      effect: 'fadein'
+
   willDestroyElement: ->
     $(document).off 'keyup', @hideConfigOnEsc.bind(this)

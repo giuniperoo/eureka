@@ -85,21 +85,7 @@
     list-style: none;
     text-transform: uppercase;
 
-    .sample {
-      height: 200px;
-      background-size: 100%;
-      background-repeat: no-repeat;
-    }
-
-    &.toner .sample {
-      background-image: image_url('toner-sample.jpg');
-    }
-    &.watercolor .sample {
-      background-image: image_url('watercolor-sample.jpg');
-    }
-    &.natural .sample {
-      background-image: image_url('natural-sample.jpg');
-    }
+    img { width: 100%; }
 
     .attribution {
       font-size: 0.4em;
