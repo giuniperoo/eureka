@@ -85,9 +85,10 @@
     list-style: none;
     text-transform: uppercase;
 
-    img {
-      width: 100%;
-      height: 55.4%;
+    .lazy {
+      height: 55%;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
 
     .attribution {

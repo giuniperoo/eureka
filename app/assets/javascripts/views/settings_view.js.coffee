@@ -3,14 +3,11 @@ App.SettingsView = Ember.View.extend
   isVisible: Ember.computed.alias 'controller.active'
   classNameBindings: 'isVisible'
 
-  fadeInMapSamples: (->
-    Ember.run.scheduleOnce 'afterRender', this, '_fadeInMapSamples'
-  ).on 'didInsertElement'
-
-  _fadeInMapSamples: ->
+  fadeInMapSamples: ->
     @.$('.lazy').lazyload
-      effect: 'fadeIn'
       event: 'load'
+      effect: 'fadeIn'
+      placeholder: ''
 
   hideSettingsOnEsc: (evt)->
     if evt.keyCode == 27
@@ -39,6 +36,7 @@ App.SettingsView = Ember.View.extend
 
   didInsertElement: ->
     $(document).on 'keyup', @hideSettingsOnEsc.bind this
+    @fadeInMapSamples()
 
   willDestroyElement: ->
     $(document).off 'keyup', @hideSettingsOnEsc.bind this
