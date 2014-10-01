@@ -8,11 +8,9 @@ App.SettingsView = Ember.View.extend
   ).on 'didInsertElement'
 
   _fadeInMapSamples: ->
-    @.$('.lazy').lazyload(
+    @.$('.lazy').lazyload
       effect: 'fadeIn'
-      effectspeed: 300
       event: 'load'
-    ).trigger 'load'
 
   hideSettingsOnEsc: (evt)->
     if evt.keyCode == 27
