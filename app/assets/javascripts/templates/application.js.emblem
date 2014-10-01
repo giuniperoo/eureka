@@ -3,7 +3,8 @@ header
   span Mapnote
   .settings-button.fa.fa-cog click='displaySettings'
 
-outlet
+.main-panel
+  outlet
 
 footer
   ul.mapnote-tiles

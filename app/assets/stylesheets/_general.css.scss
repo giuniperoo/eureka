@@ -70,11 +70,8 @@ body {
   background: image_url('satinweave.png');
 }
 
-footer {
-  top: 0;
-  width: 100%;
-  position: absolute;
-  padding-top: calc(32.5% + 55px);
+.main-panel {
+  @extend %main-panel;
 }
 
 .ember-application { margin: 0 20px; }
@@ -86,6 +83,7 @@ footer {
   overflow: hidden;
   position: relative;
   min-height: 150px;
+  background-color: whitesmoke;
 
   &:after {
     padding-top: 32.5%;

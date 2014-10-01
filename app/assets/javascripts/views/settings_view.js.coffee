@@ -15,7 +15,8 @@ App.SettingsView = Ember.View.extend
 
   hideSettings: (evt)->
     @.$().addClass 'fade-out'
-    controller = @.get('controller')
+    controller = @.get 'controller'
+
     Ember.run.later this, ->
       @.set 'isVisible', false
       @.$().removeClass 'fade-out'
@@ -35,8 +36,8 @@ App.SettingsView = Ember.View.extend
       @hideSettings evt
 
   didInsertElement: ->
-    $(document).on 'keyup', @hideSettingsOnEsc.bind this
+    $(document).on 'keyup.esc', @hideSettingsOnEsc.bind this
     @fadeInMapSamples()
 
   willDestroyElement: ->
-    $(document).off 'keyup', @hideSettingsOnEsc.bind this
+    $(document).off 'keyup.esc'

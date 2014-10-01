@@ -8,7 +8,7 @@ App.ApplicationView = Ember.View.extend
   click: -> $('.mapnote-tiles .confirm').fadeOut()
 
   didInsertElement: ->
-    $(document).on 'keyup', @keyboardShortcuts.bind(this)
+    $(document).on 'keyup.keyboard', @keyboardShortcuts.bind this
 
   willDestroyElement: ->
-    $(document).off 'keyup', @keyboardShortcuts.bind(this)
+    $(document).off 'keyup.keyboard'
