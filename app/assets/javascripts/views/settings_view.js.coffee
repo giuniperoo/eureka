@@ -1,4 +1,4 @@
-App.ConfigView = Ember.View.extend
+App.SettingsView = Ember.View.extend
   classNames: 'overlay'
   isVisible: Ember.computed.alias 'controller.active'
   classNameBindings: 'isVisible'
@@ -14,15 +14,17 @@ App.ConfigView = Ember.View.extend
       event: 'load'
     ).trigger 'load'
 
-  hideConfigOnEsc: (evt)->
+  hideSettingsOnEsc: (evt)->
     if evt.keyCode == 27
-      @hideConfig evt
+      @hideSettings evt
 
-  hideConfig: (evt)->
+  hideSettings: (evt)->
     @.$().addClass 'fade-out'
+    controller = @.get('controller')
     Ember.run.later this, ->
       @.set 'isVisible', false
       @.$().removeClass 'fade-out'
+      controller.transitionToRoute '/'
     , 300
 
   preventScroll: (->
@@ -35,10 +37,10 @@ App.ConfigView = Ember.View.extend
 
   click: (evt)->
     if $(evt.target).is '.close, .overlay'
-      @hideConfig evt
+      @hideSettings evt
 
   didInsertElement: ->
-    $(document).on 'keyup', @hideConfigOnEsc.bind(this)
+    $(document).on 'keyup', @hideSettingsOnEsc.bind this
 
   willDestroyElement: ->
-    $(document).off 'keyup', @hideConfigOnEsc.bind(this)
+    $(document).off 'keyup', @hideSettingsOnEsc.bind this

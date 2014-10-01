@@ -1,9 +1,10 @@
 App.ApplicationController = Ember.ArrayController.extend
-  needs: 'config'
+  needs: 'settings'
   sortAscending: false
   sortProperties: ['updated']
 
   actions:
-    displayConfig: ->
-      configController = @.get 'controllers.config'
-      configController.set 'active', true
+    displaySettings: ->
+      settingsController = @.get 'controllers.settings'
+      settingsController.set 'active', true
+      @transitionToRoute '/settings'

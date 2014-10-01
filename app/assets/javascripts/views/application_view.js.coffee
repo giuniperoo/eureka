@@ -2,8 +2,8 @@ App.ApplicationView = Ember.View.extend
 
   keyboardShortcuts: (evt)->
     unless $(document.activeElement).is 'textarea'
-      # c => 'config'
-      @.get('controller').send 'displayConfig' if evt.keyCode == 67
+      # s => 'settings'
+      @.get('controller').send 'displaySettings' if evt.keyCode == 83
 
   click: -> $('.mapnote-tiles .confirm').fadeOut()
 

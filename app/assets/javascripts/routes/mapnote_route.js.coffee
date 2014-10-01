@@ -1,5 +1,4 @@
 App.MapnoteRoute = Ember.Route.extend
-
   beforeModel: ->
     mapnotes = @store.all 'mapnote'
     mapnotes.setEach 'active', false

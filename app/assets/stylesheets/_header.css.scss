@@ -1,5 +1,6 @@
 header {
   top: 2px;
+  z-index: 1;
   position: relative;
   font-size: 30px;
   line-height: 65px;
@@ -25,7 +26,7 @@ header {
     margin-right: 0.4em;
   }
 
-  .config {
+  .settings-button {
     top: -15px;
     right: 20px;
     color: $clear-white;

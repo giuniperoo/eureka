@@ -70,6 +70,13 @@ body {
   background: image_url('satinweave.png');
 }
 
+footer {
+  top: 0;
+  width: 100%;
+  position: absolute;
+  padding-top: calc(32.5% + 55px);
+}
+
 .ember-application { margin: 0 20px; }
 
 

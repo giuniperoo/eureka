@@ -1,7 +1,7 @@
 header
   span Yolo
   span Mapnote
-  .config.fa.fa-cog click='displayConfig'
+  .settings-button.fa.fa-cog click='displaySettings'
 
 outlet
 
@@ -9,5 +9,3 @@ footer
   ul.mapnote-tiles
     each: unless this.isNew: unless this.isEmpty
       render 'mapnote-tile' this
-
-render 'config'
