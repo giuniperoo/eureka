@@ -2,6 +2,7 @@ App.MapView = Ember.View.extend
   map: null
   marker: null
   tileLayer: null
+  templateName: 'map'
 
   updateMap: (->
     Ember.run.scheduleOnce 'afterRender', this, 'getGeoposition'
