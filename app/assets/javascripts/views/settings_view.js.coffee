@@ -20,7 +20,7 @@ App.SettingsView = Ember.View.extend
     Ember.run.later this, ->
       @.set 'isVisible', false
       @.$().removeClass 'fade-out'
-      controller.transitionToRoute '/'
+      controller.transitionToPreviousRoute()
     , 300
 
   preventScroll: (->

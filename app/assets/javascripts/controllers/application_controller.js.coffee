@@ -7,4 +7,4 @@ App.ApplicationController = Ember.ArrayController.extend
     displaySettings: ->
       settingsController = @.get 'controllers.settings'
       settingsController.set 'active', true
-      @transitionToRoute '/settings'
+      @transitionToRoute 'settings'

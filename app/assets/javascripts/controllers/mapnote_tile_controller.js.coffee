@@ -5,7 +5,7 @@ App.MapnoteTileController = Ember.ObjectController.extend
   rerouteIfCurrent: (mapnoteId)->
     mapnoteController = @.get 'controllers.mapnote'
     if mapnoteController.model.id == mapnoteId
-      @transitionToRoute '/'
+      @transitionToRoute 'index'
 
   actions:
     removeMapnote: ->
