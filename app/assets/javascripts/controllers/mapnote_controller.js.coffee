@@ -20,3 +20,5 @@ App.MapnoteController = Ember.ObjectController.extend
       @model.set 'updated', new Date()
       @model.set 'created', new Date() if @model.get 'isNew'
       @model.save()
+
+      @transitionToRoute 'mapnote', @model if @model.get 'isNew'
