@@ -29,36 +29,42 @@
   background: $ruddy;
 
   li {
-    color: white;
-    margin: 10px;
-    cursor: pointer;
-    padding: 1px;
-    position: relative;
-    font-size: 0.53em;
     list-style: none;
-    font-weight: bold;
-    text-transform: uppercase;
 
-    &.active {
+    a {
       width: 100%;
-      cursor: default;
-      border-top: 1px solid white;
-      border-bottom: 1px solid white;
+      color: white;
+      margin: 10px;
+      cursor: pointer;
+      padding: 1px;
+      display: block;
+      position: relative;
+      font-size: 0.53em;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-decoration: none;
 
-      &:after {
-        top: 3px;
-        right: 0;
-        width: 0;
-        height: 0;
-        content: '';
-        position: absolute;
-        border-top: 10px solid transparent;
-        border-right: 10px solid whitesmoke;
-        border-bottom: 10px solid transparent;
+      &.active {
+        cursor: default;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+
+        &:after {
+          top: 3px;
+          right: 0;
+          width: 0;
+          height: 0;
+          content: '';
+          position: absolute;
+          border-top: 10px solid transparent;
+          border-right: 10px solid whitesmoke;
+          border-bottom: 10px solid transparent;
+        }
       }
     }
 
     &:last-of-type {
+      width: calc(100% - 19px);
       bottom: 0;
       position: absolute;
     }

@@ -1,0 +1,7 @@
+section.settings
+  .close.fa.fa-times
+  ul.menu
+    li.map-menu-item:   link-to 'settings.map'   | map
+    li.note-menu-item:  link-to 'settings.note'  | note
+    li.about-menu-item: link-to 'settings.about' | about
+  outlet

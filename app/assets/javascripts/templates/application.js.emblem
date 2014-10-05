@@ -9,4 +9,4 @@ header
 footer
   ul.mapnote-tiles
     each: unless this.isNew: unless this.isEmpty
-      render 'mapnote-tile' this
+      render 'mapnote_tile' this

@@ -3,7 +3,7 @@ App.PreviousTransitionable = Ember.Mixin.create
     @.saveTransition transition
 
   saveTransition: (transition)->
-    unless transition.targetName == 'settings'
+    unless transition.targetName.indexOf('settings') == 0
       @.controllerFor('settings').set 'previousTransition', transition
 
   actions:
