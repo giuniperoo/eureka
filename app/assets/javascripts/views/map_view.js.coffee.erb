@@ -2,18 +2,27 @@ App.MapView = Ember.View.extend
   map: null
   marker: null
   tileLayer: null
+  mapType: 'toner'
   templateName: 'map'
 
-  updateMap: (->
-    Ember.run.scheduleOnce 'afterRender', this, 'getGeoposition'
-  ).observes('controller.model').on 'didInsertElement'
+  didInsertElement: ->
+    mapView = this
+    @updateMapType().then ->
+      mapView.displayMap()
+
+  updateMapType: ->
+    mapView = this
+    @.get('controller.store').find('settings').then (settings)->
+      mapType = settings.get 'lastObject.mapType'
+      mapView.set 'mapType', mapType
 
   finishLoading: ->
     @.set 'controller.loading', false
 
   prepareTileLayer: ->
-    @tileLayer = new L.StamenTileLayer 'toner'
-    @tileLayer.on 'load', @finishLoading.bind(this)
+    mapType = @.get 'mapType'
+    @tileLayer = new L.StamenTileLayer mapType
+    @tileLayer.on 'load', @finishLoading.bind this
     @map.addLayer @tileLayer
 
   prepareMarker: (latLng)->
@@ -33,7 +42,7 @@ App.MapView = Ember.View.extend
       controller = @.get 'controller'
       controller.saveMapnote()
 
-    @marker.on 'dragend', recordPosition.bind(this)
+    @marker.on 'dragend', recordPosition.bind this
 
   setZoom: (numberOrEvent)->
     controller = @.get 'controller'
@@ -66,7 +75,7 @@ App.MapView = Ember.View.extend
       @setLatLng latitude, longitude
 
       zoom = position.zoom || 16
-      @setZoom(zoom)
+      @setZoom zoom
 
       # # Provide your access token
       # L.mapbox.accessToken = 'pk.eyJ1IjoiZ2l1bmlwZXJvbyIsImEiOiJ5QldHbVlvIn0.gBOtqy71Pjhf2gwVsTnP9A'
@@ -80,10 +89,10 @@ App.MapView = Ember.View.extend
         zoomControl: false
         attributionControl: false
 
-      @map.on 'zoomend', @setZoom.bind(this)
+      @map.on 'zoomend', @setZoom.bind this
 
       @prepareTileLayer()
-      @prepareMarker(latLng)
+      @prepareMarker latLng
 
       @offsetMap()
 
@@ -95,7 +104,7 @@ App.MapView = Ember.View.extend
     $('.geolocation').html '<span class="no-location">Unable to determine your location.'
     console.error('Unable to determine location: ' + positionError.message) if positionError
 
-  getGeoposition: ->
+  displayMap: ->
     if @.get 'controller.model.isNew'
       if geoPosition.init()
         geoPosition.getCurrentPosition @showMap.bind(this), @showMapError.bind(this)

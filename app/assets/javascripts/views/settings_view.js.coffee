@@ -3,6 +3,15 @@ App.SettingsView = Ember.View.extend
   isVisible: Ember.computed.alias 'controller.active'
   classNameBindings: 'isVisible'
 
+  actions:
+    selectMap: (name)->
+      @.get('controller').selectMap name
+      @.setActiveMapType name
+
+  setActiveMapType: (mapType = @.get 'controller.mapType')->
+    @.$('.maps li').removeClass 'active'
+    @.$(".#{mapType}").addClass 'active'
+
   fadeInMapSamples: ->
     @.$('.lazy').lazyload
       event: 'load'
@@ -38,6 +47,7 @@ App.SettingsView = Ember.View.extend
   didInsertElement: ->
     $(document).on 'keyup.esc', @hideSettingsOnEsc.bind this
     @fadeInMapSamples()
+    @setActiveMapType()
 
   willDestroyElement: ->
     $(document).off 'keyup.esc'

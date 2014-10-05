@@ -3,6 +3,15 @@ App.ApplicationController = Ember.ArrayController.extend
   sortAscending: false
   sortProperties: ['updated']
 
+  initializeSettings: (->
+    store = @store
+    @store.find('settings').then (settings)->
+      if settings.get('length') < 1
+        settings = store.createRecord 'settings',
+          'mapType': 'toner'
+        settings.save()
+  ).on 'init'
+
   actions:
     displaySettings: ->
       settingsController = @.get 'controllers.settings'

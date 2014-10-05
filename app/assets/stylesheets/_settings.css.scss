@@ -98,10 +98,22 @@
     }
 
     .radio-select {
+      $size: 0.9em;
+
+      left: calc(50% - #{$size} / 2);
       color: $ruddy;
+      width: $size;
+      height: $size;
       bottom: 5px;
+      border: 2px solid $ruddy;
       position: absolute;
-      left: calc(50% - 0.5em);
+      transition: background-color 0.2s;
+      border-radius: $size / 2;
+      background-color: transparent;
+    }
+
+    &.active .radio-select {
+      background-color: $ruddy;
     }
   }
 }
