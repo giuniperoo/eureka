@@ -2,7 +2,7 @@ App.MapView = Ember.View.extend
   map: null
   marker: null
   tileLayer: null
-  mapType: 'toner'
+  mapType: 'natural'
   templateName: 'map'
 
   didInsertElement: ->
@@ -20,8 +20,11 @@ App.MapView = Ember.View.extend
     @.set 'controller.loading', false
 
   prepareTileLayer: ->
-    mapType = @.get 'mapType'
-    @tileLayer = new L.StamenTileLayer mapType
+    if @mapType == 'natural'
+      @tileLayer = L.mapbox.tileLayer 'examples.ik7djhcc'
+    else
+      @tileLayer = new L.StamenTileLayer @mapType
+
     @tileLayer.on 'load', @finishLoading.bind this
     @map.addLayer @tileLayer
 
@@ -77,17 +80,17 @@ App.MapView = Ember.View.extend
       zoom = position.zoom || 16
       @setZoom zoom
 
-      # # Provide your access token
-      # L.mapbox.accessToken = 'pk.eyJ1IjoiZ2l1bmlwZXJvbyIsImEiOiJ5QldHbVlvIn0.gBOtqy71Pjhf2gwVsTnP9A'
-      # # Create a map in the div #map
-      # @map = L.mapbox.map 'map', 'giuniperoo.jkdeo2f5'
-
-      @map = new L.Map 'map',
+      options =
         center: latLng
         zoom: zoom
-        minZoom: 12
         zoomControl: false
         attributionControl: false
+
+      if @mapType == 'natural'
+        L.mapbox.accessToken = 'pk.eyJ1IjoiZ2l1bmlwZXJvbyIsImEiOiJ5QldHbVlvIn0.gBOtqy71Pjhf2gwVsTnP9A'
+        @map = L.mapbox.map 'map', null, options
+      else
+        @map = new L.Map 'map', options
 
       @map.on 'zoomend', @setZoom.bind this
 
@@ -97,12 +100,17 @@ App.MapView = Ember.View.extend
       @offsetMap()
 
     catch error
-      @showMapError()
+      @showMapError error
 
-  showMapError: (positionError) ->
+  showMapError: (error = '') ->
     @.set 'controller.loading', false
     $('.geolocation').html '<span class="no-location">Unable to determine your location.'
-    console.error('Unable to determine location: ' + positionError.message) if positionError
+
+    if typeof error == 'object'
+      message = ': ' + error.message
+    else
+      message = ': ' + error
+    console.error 'Unable to determine location' + message
 
   displayMap: ->
     if @.get 'controller.model.isNew'

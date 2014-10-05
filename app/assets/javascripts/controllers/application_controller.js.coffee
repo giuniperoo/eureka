@@ -8,7 +8,7 @@ App.ApplicationController = Ember.ArrayController.extend
     @store.find('settings').then (settings)->
       if settings.get('length') < 1
         settings = store.createRecord 'settings',
-          'mapType': 'toner'
+          'mapType': 'natural'
         settings.save()
   ).on 'init'
 
