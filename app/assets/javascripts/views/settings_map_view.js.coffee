@@ -17,3 +17,7 @@ App.SettingsMapView = Ember.View.extend
   didInsertElement: ->
     @fadeInMapSamples()
     @setActiveMapType()
+
+    parentView = @.get 'parentView'
+    if parentView.get('pointerSet') == true
+      parentView.slidePointer()

@@ -43,23 +43,13 @@
       font-weight: bold;
       text-transform: uppercase;
       text-decoration: none;
+      border-top: 1px solid transparent;
+      border-bottom: 1px solid transparent;
 
       &.active {
         cursor: default;
         border-top: 1px solid white;
         border-bottom: 1px solid white;
-
-        &:after {
-          top: 3px;
-          right: 0;
-          width: 0;
-          height: 0;
-          content: '';
-          position: absolute;
-          border-top: 10px solid transparent;
-          border-right: 10px solid whitesmoke;
-          border-bottom: 10px solid transparent;
-        }
       }
     }
 
@@ -68,6 +58,17 @@
       bottom: 0;
       position: absolute;
     }
+  }
+
+  .pointer {
+    right: 0;
+    width: 0;
+    height: 0;
+    display: none;
+    position: absolute;
+    border-top: 10px solid transparent;
+    border-right: 10px solid whitesmoke;
+    border-bottom: 10px solid transparent;
   }
 }
 

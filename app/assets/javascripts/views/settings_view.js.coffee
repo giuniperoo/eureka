@@ -3,6 +3,33 @@ App.SettingsView = Ember.View.extend
   isVisible: Ember.computed.alias 'controller.active'
   classNameBindings: 'isVisible'
 
+  pointerSet: false
+  pointerOffset: null
+
+  preventScroll: (->
+    if @.get 'isVisible'
+      window.scrollTo 0, 0
+      $('body').css 'overflow', 'hidden'
+    else
+      $('body').css 'overflow', 'initial'
+  ).observes 'isVisible'
+
+  setPointer: ->
+    @.set 'pointerOffset', $('.menu .active').position().top
+    @.set 'pointerSet', true
+
+    pointer = $('.pointer')
+    pointer.css 'top', @pointerOffset + 14
+    pointer.show()
+
+  slidePointer: (evt)->
+    activeOffset = $('.menu .active').offset().top -
+                   $('.menu').offset().top -
+                   parseInt $('.menu').css('padding'), 10
+    $('.pointer').transition
+      y: activeOffset - @pointerOffset
+    , 300
+
   hideSettingsOnEsc: (evt)->
     if evt.keyCode == 27
       @hideSettings evt
@@ -17,20 +44,14 @@ App.SettingsView = Ember.View.extend
       controller.transitionToPreviousRoute()
     , 300
 
-  preventScroll: (->
-    if @.get 'isVisible'
-      window.scrollTo 0, 0
-      $('body').css 'overflow', 'hidden'
-    else
-      $('body').css 'overflow', 'initial'
-  ).observes 'isVisible'
-
   click: (evt)->
     if $(evt.target).is '.close, .overlay'
       @hideSettings evt
 
   didInsertElement: ->
     $(document).on 'keyup.esc', @hideSettingsOnEsc.bind this
+    $(window).on 'load.settings.pointer', @setPointer.bind this
 
   willDestroyElement: ->
     $(document).off 'keyup.esc'
+    $(window).off 'load.settings.pointer'
