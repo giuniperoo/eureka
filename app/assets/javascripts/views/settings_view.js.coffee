@@ -50,8 +50,7 @@ App.SettingsView = Ember.View.extend
 
   didInsertElement: ->
     $(document).on 'keyup.esc', @hideSettingsOnEsc.bind this
-    $(window).on 'load.settings.pointer', @setPointer.bind this
+    @setPointer()
 
   willDestroyElement: ->
     $(document).off 'keyup.esc'
-    $(window).off 'load.settings.pointer'
