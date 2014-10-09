@@ -25,7 +25,7 @@ App.SettingsView = Ember.View.extend
   slidePointer: (evt)->
     activeOffset = $('.menu .active').offset().top -
                    $('.menu').offset().top -
-                   parseInt $('.menu').css('padding'), 10
+                   parseInt $('.menu').css('paddingTop'), 10
     $('.pointer').transition
       y: activeOffset - @pointerOffset
     , 300
