@@ -3,7 +3,7 @@ App.SettingsController = Ember.ObjectController.extend
   previousTransition: null
 
   transitionToPreviousRoute: ->
-    if @previousTransition
+    if @previousTransition && !@previousTransition.isAborted
       @previousTransition.retry()
     else
       @.transitionToRoute 'index'
