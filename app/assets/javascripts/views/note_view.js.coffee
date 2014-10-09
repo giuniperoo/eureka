@@ -1,20 +1,21 @@
-App.NoteView = Ember.View.extend
+App.NoteView = App.EmojiView.extend
   classNames: 'note'
   templateName: 'note'
   updateNote: (->
     Ember.run.scheduleOnce 'afterRender', this, 'initializeNote'
   ).observes('controller.model').on 'didInsertElement'
 
-  keyUp: ->
-    Ember.run.debounce this, 'compareText', 1000
+  keyDown: ->
+    Ember.run.debounce this, 'handleSave', 1000
 
-  compareText: ->
+  handleSave: ->
     controller = @.get 'controller'
     uiText     = controller.get 'text'
     modelText  = controller.get 'model.text'
 
     if uiText != '' && uiText != modelText
       controller.saveMapnote()
+      Ember.run.scheduleOnce 'afterRender', emojify, 'run'
 
   initializeNote: ->
     if @.get 'controller.model.isNew'
@@ -48,3 +49,10 @@ App.NoteView = Ember.View.extend
         @hideNote()
       else
         @displayNote()
+
+  didInsertElement: ->
+    @._super()
+    $(document).on 'click.emoji', '.dropdown-menu', @handleSave.bind this
+
+  willDestroyElement: ->
+    $(document).off 'click.emoji'

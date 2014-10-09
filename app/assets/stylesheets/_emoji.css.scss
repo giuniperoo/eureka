@@ -1,0 +1,39 @@
+.emojify {
+  width: 1.3em;
+  height: 1.3em;
+  display: inline-block;
+  margin-bottom: -0.2em;
+}
+
+.dropdown-menu {
+  margin: 0;
+  padding: 0;
+  border: 1px dashed $ruddy;
+  font-size: 15px;
+  min-width: 150px;
+  list-style: none;
+  background-color: white;
+
+  li {
+    &:hover { cursor: pointer; }
+
+    a {
+      display: block;
+      padding: 5px 10px 6px;
+    }
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+    bottom: 1px;
+    position: relative;
+    margin-right: 7px;
+    vertical-align: middle;
+  }
+
+  .active {
+    color: white;
+    background-color: $ruddy;
+  }
+}
