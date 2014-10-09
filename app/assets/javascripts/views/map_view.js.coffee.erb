@@ -5,7 +5,11 @@ App.MapView = Ember.View.extend
   mapType: 'natural'
   templateName: 'map'
 
-  didInsertElement: ->
+  updateMap: (->
+    Ember.run.scheduleOnce 'afterRender', this, '_updateMap'
+  ).observes('controller.model').on 'didInsertElement'
+
+  _updateMap: ->
     mapView = this
     @updateMapType().then ->
       mapView.displayMap()
