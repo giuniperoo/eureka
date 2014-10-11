@@ -1,5 +1,41 @@
 App.EmojiView = Ember.View.extend
-  emojies: [
+
+  initializeEmojiDropdown: ->
+    emojis = @emojis
+    $('textarea').textcomplete [
+      {
+        match: /(^|\s):(\w*)$/
+        search: (term, callback)->
+          regexp = new RegExp('^' + term)
+          callback $.grep(emojis, (emoji)->
+            regexp.test emoji
+          )
+        template: (value)->
+          '<img src="http://www.tortue.me/emoji/' + value + '.png"></img>' + value
+        replace: (value)->
+          '$1:' + value + ': '
+      }
+    ],
+      maxCount: 7
+      appendTo: $('.ember-application')
+
+  initializeEmojiConversion: ->
+    emojify.setConfig
+      only_crawl_elem: $('.mapnote-tiles').get(0)
+      img_dir: 'http://www.tortue.me/emoji'
+      ignore_emoticons: true
+      ignored_tags:
+        'SCRIPT': 1
+        'SPAN': 1
+        'DIV': 1
+
+    emojify.run()
+
+  didInsertElement: ->
+    @initializeEmojiDropdown()
+    @initializeEmojiConversion()
+
+  emojis: [
     '+1', '-1', '100', '1234', '8ball', 'a', 'ab', 'abc', 'abcd', 'accept',
     'aerial_tramway', 'airplane', 'alarm_clock', 'alien', 'ambulance', 'anchor',
     'angel', 'anger', 'angry', 'anguished', 'ant', 'apple', 'aquarius', 'aries',
@@ -10,7 +46,7 @@ App.EmojiView = Ember.View.extend
     'arrow_up_small', 'arrow_upper_left', 'arrow_upper_right',
     'arrows_clockwise', 'arrows_counterclockwise', 'art', 'articulated_lorry',
     'astonished', 'athletic_shoe', 'atm', 'b', 'baby', 'baby_bottle',
-    'baby_chick', 'baby_symbol', 'back', 'baggage_claim', 'balloon',
+    'baby_chick', 'baby_symbol', 'baggage_claim', 'balloon',
     'ballot_box_with_check', 'bamboo', 'banana', 'bangbang', 'bank', 'bar_chart',
     'barber', 'baseball', 'basketball', 'bath', 'bathtub', 'battery', 'bear',
     'bee', 'beer', 'beers', 'beetle', 'beginner', 'bell', 'bento', 'bicyclist',
@@ -49,7 +85,7 @@ App.EmojiView = Ember.View.extend
     'dvd', 'e-mail', 'ear', 'ear_of_rice', 'earth_africa', 'earth_americas',
     'earth_asia', 'egg', 'eggplant', 'eight', 'eight_pointed_black_star',
     'eight_spoked_asterisk', 'electric_plug', 'elephant', 'email', 'end',
-    'envelope', 'envelope_with_arrow', 'es', 'euro', 'european_castle',
+    'envelope', 'es', 'euro', 'european_castle',
     'european_post_office', 'evergreen_tree', 'exclamation', 'expressionless',
     'eyeglasses', 'eyes', 'facepunch', 'factory', 'fallen_leaf', 'family',
     'fast_forward', 'fax', 'fearful', 'feelsgood', 'feet', 'ferris_wheel',
@@ -79,7 +115,7 @@ App.EmojiView = Ember.View.extend
     'jack_o_lantern', 'japan', 'japanese_castle', 'japanese_goblin',
     'japanese_ogre', 'jeans', 'joy', 'joy_cat', 'jp', 'key', 'keycap_ten',
     'kimono', 'kiss', 'kissing', 'kissing_cat', 'kissing_closed_eyes',
-    'kissing_heart', 'kissing_smiling_eyes', 'koala', 'koko', 'kr', 'lantern',
+    'kissing_heart', 'kissing_smiling_eyes', 'koala', 'koko', 'kr',
     'large_blue_circle', 'large_blue_diamond', 'large_orange_diamond',
     'last_quarter_moon', 'last_quarter_moon_with_face', 'laughing', 'leaves',
     'ledger', 'left_luggage', 'left_right_arrow', 'leftwards_arrow_with_hook',
@@ -104,7 +140,7 @@ App.EmojiView = Ember.View.extend
     'older_man', 'older_woman', 'on', 'oncoming_automobile', 'oncoming_bus',
     'oncoming_police_car', 'oncoming_taxi', 'one', 'open_book',
     'open_file_folder', 'open_hands', 'open_mouth', 'ophiuchus', 'orange_book',
-    'outbox_tray', 'ox', 'package', 'page_facing_up', 'page_with_curl', 'pager',
+    'outbox_tray', 'ox', 'page_with_curl', 'pager',
     'palm_tree', 'panda_face', 'paperclip', 'parking', 'part_alternation_mark',
     'partly_sunny', 'passport_control', 'paw_prints', 'peach', 'pear', 'pencil',
     'pencil2', 'penguin', 'pensive', 'performing_arts', 'persevere',
@@ -163,32 +199,3 @@ App.EmojiView = Ember.View.extend
     'womans_hat', 'womens', 'worried', 'wrench', 'x', 'yellow_heart', 'yen',
     'yum', 'zap', 'zero', 'zzz'
   ]
-
-  initializeEmojiDropdown: ->
-    emojies = @emojies
-    $('textarea').textcomplete [
-      {
-        match: /(^|\s):(\w*)$/
-        search: (term, callback)->
-          regexp = new RegExp('^' + term)
-          callback $.grep(emojies, (emoji)->
-            regexp.test emoji
-          )
-        template: (value)->
-          '<img src="http://tortue.me/emoji/' + value + '.png"></img>' + value
-        replace: (value)->
-          '$1:' + value + ': '
-      }
-    ],
-      maxCount: 7
-      appendTo: $('.ember-application')
-
-  initializeEmojiConversion: ->
-    emojify.initialize
-      root_element: $('.mapnote-tiles').get(0)
-
-    emojify.run()
-
-  didInsertElement: ->
-    @initializeEmojiDropdown()
-    @initializeEmojiConversion()
