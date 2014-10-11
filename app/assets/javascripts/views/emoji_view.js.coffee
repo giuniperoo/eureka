@@ -1,5 +1,6 @@
 App.EmojiView = Ember.View.extend
 
+  # https://github.com/yuku-t/jquery-textcomplete
   initializeEmojiDropdown: ->
     emojis = @emojis
     $('textarea').textcomplete [
@@ -19,7 +20,9 @@ App.EmojiView = Ember.View.extend
       maxCount: 7
       appendTo: $('.ember-application')
 
+  # https://github.com/hassankhan/emojify.js
   initializeEmojiConversion: ->
+    emojify.emojiNames = @emojis
     emojify.setConfig
       only_crawl_elem: $('.mapnote-tiles').get(0)
       img_dir: 'http://www.tortue.me/emoji'
