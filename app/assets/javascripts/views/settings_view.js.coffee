@@ -14,20 +14,22 @@ App.SettingsView = Ember.View.extend
       $('body').css 'overflow', 'initial'
   ).observes 'isVisible'
 
+  getActiveOffset: ->
+    $('.menu .active').offset().top -
+        $('.menu').offset().top  #-
+        # parseInt $('.menu').css('paddingTop'), 10
+
   setPointer: ->
-    @.set 'pointerOffset', $('.menu .active').position().top
+    @.set 'pointerOffset', @getActiveOffset()
     @.set 'pointerSet', true
 
     pointer = $('.pointer')
-    pointer.css 'top', @pointerOffset + 14
+    pointer.css 'top', @pointerOffset + 4
     pointer.show()
 
   slidePointer: (evt)->
-    activeOffset = $('.menu .active').offset().top -
-                   $('.menu').offset().top -
-                   parseInt $('.menu').css('paddingTop'), 10
     $('.pointer').transition
-      y: activeOffset - @pointerOffset
+      y: @getActiveOffset() - @pointerOffset
     , 300
 
   hideSettingsOnEsc: (evt)->
@@ -50,7 +52,6 @@ App.SettingsView = Ember.View.extend
 
   didInsertElement: ->
     $(document).on 'keyup.esc', @hideSettingsOnEsc.bind this
-    @setPointer()
 
   willDestroyElement: ->
     $(document).off 'keyup.esc'

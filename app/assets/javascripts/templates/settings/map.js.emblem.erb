@@ -1,41 +1,40 @@
-ul.maps
-  li.natural{action 'selectMap' 'natural' target='view'}
-    | natural
-    .lazy data-original="<%= image_path('natural-sample.jpg') %>"
-    p.attribution
-      ' Map tiles by
-      a href='https://www.mapbox.com/about/maps/' Mapbox
-      ' . Data by
-      a href="http://openstreetmap.org" OpenStreetMap
-      | .
-    .radio-select
+li.natural{action 'selectMap' 'natural' target='view'}
+  | natural
+  .lazy data-original="<%= image_path('natural-sample.jpg') %>"
+  p.attribution
+    ' Map tiles by
+    a href='https://www.mapbox.com/about/maps/' Mapbox
+    ' . Data by
+    a href="http://openstreetmap.org" OpenStreetMap
+    | .
+  .radio-select
 
-  li.toner{action 'selectMap' 'toner' target='view'}
-    | toner
-    .lazy data-original="<%= image_path('toner-sample.jpg') %>"
-    p.attribution
-      ' Map tiles by
-      a href='http://stamen.com/' Stamen Design
-      ' , under
-      a href="http://creativecommons.org/licenses/by/3.0" CC BY 3.0
-      ' . Data by
-      a href="http://openstreetmap.org" OpenStreetMap
-      ' , under
-      a href="http://www.openstreetmap.org/copyright" ODbL
-      | .
-    .radio-select
+li.toner{action 'selectMap' 'toner' target='view'}
+  | toner
+  .lazy data-original="<%= image_path('toner-sample.jpg') %>"
+  p.attribution
+    ' Map tiles by
+    a href='http://stamen.com/' Stamen Design
+    ' , under
+    a href="http://creativecommons.org/licenses/by/3.0" CC BY 3.0
+    ' . Data by
+    a href="http://openstreetmap.org" OpenStreetMap
+    ' , under
+    a href="http://www.openstreetmap.org/copyright" ODbL
+    | .
+  .radio-select
 
-  li.watercolor{action 'selectMap' 'watercolor' target='view'}
-    | watercolor
-    .lazy data-original="<%= image_path('watercolor-sample.jpg') %>"
-    p.attribution
-      ' Map tiles by
-      a href='http://stamen.com/' Stamen Design
-      ' , under
-      a href="http://creativecommons.org/licenses/by/3.0" CC BY 3.0
-      ' . Data by
-      a href="http://openstreetmap.org" OpenStreetMap
-      ' , under
-      a href="http://www.openstreetmap.org/copyright" ODbL
-      | .
-    .radio-select
+li.watercolor{action 'selectMap' 'watercolor' target='view'}
+  | watercolor
+  .lazy data-original="<%= image_path('watercolor-sample.jpg') %>"
+  p.attribution
+    ' Map tiles by
+    a href='http://stamen.com/' Stamen Design
+    ' , under
+    a href="http://creativecommons.org/licenses/by/3.0" CC BY 3.0
+    ' . Data by
+    a href="http://openstreetmap.org" OpenStreetMap
+    ' , under
+    a href="http://www.openstreetmap.org/copyright" ODbL
+    | .
+  .radio-select

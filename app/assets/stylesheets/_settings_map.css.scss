@@ -1,0 +1,47 @@
+.settings .maps {
+  @extend %settings-container;
+
+  li {
+    float: left;
+    width: calc(33.333% - 20px);
+    height: calc(100% - 20px);
+    margin: 10px;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    list-style: none;
+    text-transform: uppercase;
+
+    .lazy {
+      height: 55%;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .attribution {
+      font-size: 0.4em;
+      line-height: 2em;
+
+      a { color: $ruddy; }
+    }
+
+    .radio-select {
+      $size: 0.9em;
+
+      left: calc(50% - #{$size} / 2);
+      color: $ruddy;
+      width: $size;
+      height: $size;
+      bottom: 5px;
+      border: 2px solid $ruddy;
+      position: absolute;
+      transition: background-color 0.2s;
+      border-radius: $size / 2;
+      background-color: transparent;
+    }
+
+    &.active .radio-select {
+      background-color: $ruddy;
+    }
+  }
+}
