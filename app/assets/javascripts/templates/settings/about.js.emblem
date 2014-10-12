@@ -1,2 +1,6 @@
 .yolo
-  | YOLO
+  | Y
+  span#eyeLeft O
+  | L
+  span#eyeRight O
+  .smile )

@@ -12,6 +12,17 @@ App.SettingsSubView = Ember.View.extend
 App.SettingsAboutView = App.SettingsSubView.extend
   classNames: 'about'
 
+  didInsertElement: ->
+    @._super()
+
+    eyeLeft  = new Eye 3, 13, 20, 'eyeLeft'
+    eyeRight = new Eye 3, 13, 20, 'eyeRight'
+
+    Ember.run.later(this, ->
+      @.$('.smile, canvas').transition
+        opacity: 1
+        duration: 800
+    , 3000)
 
 App.SettingsNoteView = App.SettingsSubView.extend
   classNames: 'note'

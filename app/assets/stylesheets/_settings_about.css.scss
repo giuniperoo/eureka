@@ -4,4 +4,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  #eyeLeft, #eyeRight {
+    position: relative;
+  }
+
+  canvas { opacity: 0; }
+
+  .smile {
+    opacity: 0;
+    transform: rotate(90deg);
+    font-size: 50px;
+    margin-top: 10px;
+    margin-left: 25px;
+    font-weight: 200;
+    font-family: helvetica neue;
+  }
 }
