@@ -4,3 +4,11 @@
   | L
   span#eyeRight O
   .smile )
+
+.signature
+  | troy giunipero
+  br
+  | giunipero (at) gmail
+  br
+  a href='https://github.com/tgiunipero' target='_blank' github
+

@@ -18,6 +18,11 @@ App.SettingsAboutView = App.SettingsSubView.extend
     eyeLeft  = new Eye 3, 13, 20, 'eyeLeft'
     eyeRight = new Eye 3, 13, 20, 'eyeRight'
 
+    @.$('.yolo').transition
+      x: 0
+      opacity: 1
+      duration: 400
+
     Ember.run.later(this, ->
       @.$('.smile, canvas').transition
         opacity: 1

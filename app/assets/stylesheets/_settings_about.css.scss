@@ -11,6 +11,11 @@
 
   canvas { opacity: 0; }
 
+  .yolo {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
   .smile {
     opacity: 0;
     transform: rotate(90deg);
@@ -19,5 +24,14 @@
     margin-left: 25px;
     font-weight: 200;
     font-family: helvetica neue;
+  }
+
+  .signature {
+    right: 30px;
+    bottom: 20px;
+    position: absolute;
+    font-size: 16px;
+
+    a { color: $ruddy; }
   }
 }
