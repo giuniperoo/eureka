@@ -9,6 +9,7 @@ App.ApplicationController = Ember.ArrayController.extend
       if settings.get('length') < 1
         settings = store.createRecord 'settings',
           'mapType': 'natural'
+          'emojiActive': true
         settings.save()
   ).on 'init'
 

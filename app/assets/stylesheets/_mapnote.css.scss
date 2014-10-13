@@ -25,7 +25,16 @@
   font-size: 30px;
 }
 
-.note {
+#map {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  background-color: whitesmoke;
+}
+
+#note {
   top: 0;
   right: 2000px;
   width: 66.667%;
@@ -46,15 +55,6 @@
     .note-slider.right { display: inline-block; }
     textarea { opacity: 1; }
   }
-}
-
-#map {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: absolute;
-  background-color: whitesmoke;
 }
 
 textarea {

@@ -34,10 +34,6 @@ App.EmojiView = Ember.View.extend
 
     emojify.run()
 
-  didInsertElement: ->
-    @initializeEmojiDropdown()
-    @initializeEmojiConversion()
-
   emojis: [
     '+1', '-1', '100', '1234', '8ball', 'a', 'ab', 'abc', 'abcd', 'accept',
     'aerial_tramway', 'airplane', 'alarm_clock', 'alien', 'ambulance', 'anchor',

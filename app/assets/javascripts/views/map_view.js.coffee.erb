@@ -1,9 +1,9 @@
 App.MapView = Ember.View.extend
-  map: null
-  marker: null
-  tileLayer: null
-  mapType: 'natural'
   templateName: 'map'
+  map:       null
+  marker:    null
+  mapType:   null
+  tileLayer: null
 
   updateMap: (->
     Ember.run.scheduleOnce 'afterRender', this, '_updateMap'
@@ -108,7 +108,7 @@ App.MapView = Ember.View.extend
 
   showMapError: (error = '') ->
     @.set 'controller.loading', false
-    $('.geolocation').html '<span class="no-location">Unable to determine your location.'
+    $('.geolocation').html '<span class="no-location">Unable to determine your location.</span>'
 
     if typeof error == 'object'
       message = ': ' + error.message

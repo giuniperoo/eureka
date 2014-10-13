@@ -1,0 +1,19 @@
+section.fonts-container
+  .title fonts
+
+  ul.font-list
+    li.active Default
+    li Cursive
+    li Monospace
+
+section.emoji-container
+  .title emoji
+
+  .emoji-toggle-container
+    .status disabled
+    = input#emoji-toggle.toggle type='checkbox' checked=emojiActive
+    label for='emoji-toggle'
+
+  img.lazy data-original="<%= image_path('emoji-dropdown.gif') %>"
+
+  p Just type a colon (:) to trigger the emoji dropdown. The selected emoji will appear in the resulting maptile.

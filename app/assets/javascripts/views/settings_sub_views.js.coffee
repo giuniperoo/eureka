@@ -1,5 +1,14 @@
 App.SettingsSubView = Ember.View.extend
+
+  fadeInImages: ->
+    @.$('.lazy').lazyload
+      event: 'load'
+      effect: 'fadeIn'
+      placeholder: ''
+
   didInsertElement: ->
+    @fadeInImages()
+
     Ember.run.later(this, ->
       parentView = @.get 'parentView'
       if parentView.get('pointerSet') == true
@@ -29,8 +38,23 @@ App.SettingsAboutView = App.SettingsSubView.extend
         duration: 800
     , 3000)
 
+
 App.SettingsNoteView = App.SettingsSubView.extend
   classNames: 'note'
+
+  toggleEmoji: (->
+    Ember.run.scheduleOnce('afterRender', this, '_toggleEmoji')
+  ).observes 'controller.emojiActive'
+
+  _toggleEmoji: ->
+    if @.get 'controller.emojiActive'
+      @.$('.status').text 'enabled'
+      @.$('.emoji-container img').removeClass 'blackAndWhite'
+      @.get('controller').toggleEmoji true
+    else
+      @.$('.status').text 'disabled'
+      @.$('.emoji-container img').addClass 'blackAndWhite'
+      @.get('controller').toggleEmoji false
 
 
 App.SettingsMapView = App.SettingsSubView.extend
@@ -46,13 +70,6 @@ App.SettingsMapView = App.SettingsSubView.extend
     @.$('li').removeClass 'active'
     @.$(".#{mapType}").addClass 'active'
 
-  fadeInMapSamples: ->
-    @.$('.lazy').lazyload
-      event: 'load'
-      effect: 'fadeIn'
-      placeholder: ''
-
   didInsertElement: ->
     @._super()
-    @fadeInMapSamples()
     @setActiveMapType()

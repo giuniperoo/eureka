@@ -1,3 +1,45 @@
+@import 'emoji_toggle';
+
 .settings .note {
   @extend %settings-container;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+
+  section {
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    padding: 10px;
+  }
+
+  .title { text-transform: uppercase; }
+
+  .font-container {
+    li { list-style: none; }
+  }
+
+  .emoji-container {
+    @extend %emoji-toggle;
+
+    .lazy {
+      float: left;
+      height: 199px;
+      margin: 15px 15px 0 0;
+      border: 1px dashed $ruddy;
+
+      &.blackAndWhite {
+        filter: grayscale(1);
+        transform: translateZ(0);
+      }
+    }
+
+    p {
+      float: left;
+      max-width: 50%;
+      font-size: 16px;
+      font-style: italic;
+    }
+  }
 }

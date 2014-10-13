@@ -1,4 +1,4 @@
 .mapnote-editor
   App.MapView id='map'
   unless loading
-    App.NoteView
+    App.NoteView id='note'

@@ -1,0 +1,72 @@
+%emoji-toggle {
+  .emoji-toggle-container {
+    position: relative;
+    max-width: 200px;
+    margin-top: 5px;
+
+    .status {
+      right: 5px;
+      position: absolute;
+      font-size: 20px;
+      font-style: italic;
+    }
+
+    .toggle {
+      position: absolute;
+      visibility: hidden;
+      margin-left: -9999px;
+    }
+
+    .toggle + label {
+      width: 120px;
+      height: 0.9em;
+      background-color: $grey;
+      border-radius: 0.45em;
+      transition: background 0.2s;
+    }
+
+    .toggle + label {
+      cursor: pointer;
+      outline: none;
+      display: block;
+      position: relative;
+      user-select: none;
+    }
+
+    .toggle + label:before,
+    .toggle + label:after {
+      content: '';
+      display: block;
+      position: absolute;
+    }
+
+    .toggle + label:before {
+      top: 2px;
+      left: 2px;
+      right: 2px;
+      bottom: 2px;
+      transition: background 0.2s;
+      border-radius: 12px;
+      background-color: white;
+    }
+
+    .toggle + label:after {
+      top: 4px;
+      left: 4px;
+      width: 21px;
+      bottom: 4px;
+      transition: all 0.2s;
+      border-radius: 10.5px;
+      background-color: $grey;
+    }
+
+    .toggle:checked + label {
+      background-color: $ruddy;
+    }
+
+    .toggle:checked + label:after {
+      margin-left: 91px;
+      background-color: $ruddy;
+    }
+  }
+}
