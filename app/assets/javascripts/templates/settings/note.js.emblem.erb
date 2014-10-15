@@ -1,10 +1,19 @@
-section.fonts-container
+section.font-container
   .title fonts
 
   ul.font-list
-    li.active Default
-    li Cursive
-    li Monospace
+    li.sans.active
+      .radio-select
+      | sans
+      input type='text' placeholder='The quick brown fox jumps over the lazy dog'
+    li.mono
+      .radio-select
+      | mono
+      input type='text' placeholder='The quick brown fox jumps over the lazy dog'
+    li.cursive
+      .radio-select
+      | cursive
+      input type='text' placeholder=' The quick brown fox jumps over the lazy dog'
 
 section.emoji-container
   .title emoji

@@ -7,7 +7,7 @@
 
 .no-location {
   font-size: 25px;
-  font-family: $brandon;
+  font-family: $sans;
 
   &:after {
     content: '\f119';
@@ -64,14 +64,31 @@ textarea {
   resize: none;
   opacity: 0;
   outline: none;
-  font-size: 22px;
-  font-family: $brandon;
   background-color: transparent;
   transition: opacity 0.3s;
 
-
   @include input-placeholder {
     font-style: italic;
+  }
+
+  // FONT SELECTION
+
+  // default: sans
+  font-size: 22px;
+  line-height: 32px;
+  font-family: $sans;
+
+  &.mono {
+    font-size: 21px;
+    line-height: 32px;
+    font-family: $mono;
+  }
+
+  &.cursive {
+    color: #444;
+    font-size: 42px;
+    line-height: 39px;
+    font-family: $cursive;
   }
 }
 

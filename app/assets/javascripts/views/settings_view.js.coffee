@@ -16,8 +16,7 @@ App.SettingsView = Ember.View.extend
 
   getActiveOffset: ->
     $('.menu .active').offset().top -
-        $('.menu').offset().top  #-
-        # parseInt $('.menu').css('paddingTop'), 10
+        $('.menu').offset().top
 
   setPointer: ->
     @.set 'pointerOffset', @getActiveOffset()

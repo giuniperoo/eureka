@@ -17,7 +17,63 @@
   .title { text-transform: uppercase; }
 
   .font-container {
-    li { list-style: none; }
+    .font-list {
+      margin: 0;
+      padding-left: 0;
+    }
+
+    li {
+      cursor: pointer;
+      list-style: none;
+      margin-bottom: 5px;
+
+      .radio-select {
+        $size: 21px;
+
+        top: 4px;
+        color: $ruddy;
+        width: $size;
+        height: $size;
+        border: 2px solid $ruddy;
+        display: inline-block;
+        position: relative;
+        transition: background-color 0.2s;
+        margin-right: 10px;
+        border-radius: $size / 2;
+        background-color: transparent;
+      }
+
+      &.active .radio-select {
+        background-color: $ruddy;
+      }
+
+      input {
+        width: 82%;
+        border: 0;
+        outline: none;
+        display: block;
+        font-size: 20px;
+      }
+
+      &.sans input {
+        padding: 2px 8px;
+        font-family: $sans;
+      }
+
+      &.mono input {
+        padding: 8px;
+        font-size: 17px;
+        font-family: $mono;
+      }
+
+      &.cursive input {
+        color: #444;
+        padding: 0 4px;
+        font-size: 29px;
+        line-height: 27px;
+        font-family: $cursive;
+      }
+    }
   }
 
   .emoji-container {

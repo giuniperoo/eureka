@@ -8,11 +8,24 @@ $clear-white: rgba(255, 255, 255, 0.3);
 /* fonts */
 @font-face {
   font-family: 'Brandon';
-  src: font-url('Brandon_light.otf');
+  src: font-url('brandon_light.otf');
   font-weight: normal;
 }
+$sans: 'Brandon', 'Helvetica Neue', Helvetica;
 
-$brandon: 'Brandon', 'Helvetica Neue', Helvetica, Arial;
+@font-face {
+  font-family: 'Anonymous';
+  src: font-url('anonymous_pro.ttf');
+  font-weight: normal;
+}
+$mono: 'Anonymous', 'Monaco', 'Courier New';
+
+@font-face {
+  font-family: 'Christopher Hand';
+  src: font-url('christopher_hand.ttf');
+  font-weight: normal;
+}
+$cursive: 'Christopher Hand', 'Brush Script MT';
 
 
 /* animations */
@@ -66,7 +79,7 @@ $brandon: 'Brandon', 'Helvetica Neue', Helvetica, Arial;
 * { box-sizing: border-box; }
 
 body {
-  font: 400 2em $brandon;
+  font: 400 2em $sans;
   background: image_url('satinweave.png');
 }
 
