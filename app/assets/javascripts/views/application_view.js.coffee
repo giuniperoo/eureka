@@ -1,7 +1,7 @@
 App.ApplicationView = Ember.View.extend
 
   keyboardShortcuts: (evt)->
-    unless $(document.activeElement).is 'textarea'
+    unless $(document.activeElement).is 'textarea, input'
       # s => 'settings'
       @.get('controller').send 'displaySettings' if evt.keyCode == 83
 

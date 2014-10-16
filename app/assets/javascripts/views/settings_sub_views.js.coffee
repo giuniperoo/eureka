@@ -18,25 +18,22 @@ App.SettingsSubView = Ember.View.extend
     , 100)
 
 
-App.SettingsAboutView = App.SettingsSubView.extend
-  classNames: 'about'
+App.SettingsMapView = App.SettingsSubView.extend
+  tagName: 'ul'
+  classNames: 'maps'
+
+  actions:
+    selectMap: (name)->
+      @.get('controller').selectMap name
+      @.setActiveMapType name
+
+  setActiveMapType: (mapType = @.get 'controller.mapType')->
+    @.$('li').removeClass 'active'
+    @.$(".#{mapType}").addClass 'active'
 
   didInsertElement: ->
     @._super()
-
-    eyeLeft  = new Eye 3, 13, 20, 'eyeLeft'
-    eyeRight = new Eye 3, 13, 20, 'eyeRight'
-
-    @.$('.yolo').transition
-      x: 0
-      opacity: 1
-      duration: 400
-
-    Ember.run.later(this, ->
-      @.$('.smile, canvas').transition
-        opacity: 1
-        duration: 800
-    , 3000)
+    @setActiveMapType()
 
 
 App.SettingsNoteView = App.SettingsSubView.extend
@@ -70,19 +67,22 @@ App.SettingsNoteView = App.SettingsSubView.extend
     @setActiveFont()
 
 
-App.SettingsMapView = App.SettingsSubView.extend
-  tagName: 'ul'
-  classNames: 'maps'
-
-  actions:
-    selectMap: (name)->
-      @.get('controller').selectMap name
-      @.setActiveMapType name
-
-  setActiveMapType: (mapType = @.get 'controller.mapType')->
-    @.$('li').removeClass 'active'
-    @.$(".#{mapType}").addClass 'active'
+App.SettingsAboutView = App.SettingsSubView.extend
+  classNames: 'about'
 
   didInsertElement: ->
     @._super()
-    @setActiveMapType()
+
+    eyeLeft  = new Eye 3, 13, 20, 'eyeLeft'
+    eyeRight = new Eye 3, 13, 20, 'eyeRight'
+
+    @.$('.yolo').transition
+      x: 0
+      opacity: 1
+      duration: 400
+
+    Ember.run.later(this, ->
+      @.$('.smile, canvas')?.transition
+        opacity: 1
+        duration: 800
+    , 3000)

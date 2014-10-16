@@ -61,13 +61,14 @@
       }
 
       &.mono input {
+        color: $mono-black;
         padding: 8px;
         font-size: 17px;
         font-family: $mono;
       }
 
       &.cursive input {
-        color: $charcoal;
+        color: $cursive-black;
         padding: 0 4px;
         font-size: 29px;
         line-height: 27px;

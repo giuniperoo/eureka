@@ -79,13 +79,14 @@ textarea {
   font-family: $sans;
 
   &.mono {
+    color: $mono-black;
     font-size: 21px;
     line-height: 32px;
     font-family: $mono;
   }
 
   &.cursive {
-    color: $charcoal;
+    color: $cursive-black;
     font-size: 42px;
     line-height: 39px;
     font-family: $cursive;

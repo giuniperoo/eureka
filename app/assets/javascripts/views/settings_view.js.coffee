@@ -31,10 +31,6 @@ App.SettingsView = Ember.View.extend
       y: @getActiveOffset() - @pointerOffset
     , 300
 
-  hideSettingsOnEsc: (evt)->
-    if evt.keyCode == 27
-      @hideSettings evt
-
   hideSettings: (evt)->
     @.$().addClass 'fade-out'
     controller = @.get 'controller'
@@ -45,12 +41,27 @@ App.SettingsView = Ember.View.extend
       controller.transitionToPreviousRoute()
     , 300
 
+  keyboardShortcuts: (evt)->
+    unless $(document.activeElement).is 'input'
+      # m => 'map'
+      if evt.keyCode == 77
+        @.get('controller').transitionToRoute 'settings.map'
+      # n => 'note'
+      if evt.keyCode == 78
+        @.get('controller').transitionToRoute 'settings.note'
+      # a => 'about'
+      if evt.keyCode == 65
+        @.get('controller').transitionToRoute 'settings.about'
+
+    # esc => hide settings
+    @hideSettings evt if evt.keyCode == 27
+
   click: (evt)->
     if $(evt.target).is '.close, .overlay'
       @hideSettings evt
 
   didInsertElement: ->
-    $(document).on 'keyup.esc', @hideSettingsOnEsc.bind this
+    $(document).on 'keyup.settings', @keyboardShortcuts.bind this
 
   willDestroyElement: ->
-    $(document).off 'keyup.esc'
+    $(document).off 'keyup.settings'

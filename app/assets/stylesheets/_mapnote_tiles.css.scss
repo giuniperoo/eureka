@@ -4,12 +4,13 @@
 
   &.sans li p:nth-of-type(1) { /* default */ }
   &.mono li p:nth-of-type(1) {
+    color: $mono-black;
     font-size: 16px;
     line-height: 24px;
     font-family: $mono;
   }
   &.cursive li p:nth-of-type(1) {
-    color: $charcoal;
+    color: $cursive-black;
     font-size: 27px;
     line-height: 23px;
     font-family: $cursive;
