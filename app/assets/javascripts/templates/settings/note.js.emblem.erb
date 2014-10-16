@@ -2,15 +2,15 @@ section.font-container
   .title fonts
 
   ul.font-list
-    li.sans.active
+    li.sans{action 'selectFont' 'sans' target='view'}
       .radio-select
       | sans
       input type='text' placeholder='The quick brown fox jumps over the lazy dog'
-    li.mono
+    li.mono{action 'selectFont' 'mono' target='view'}
       .radio-select
       | mono
       input type='text' placeholder='The quick brown fox jumps over the lazy dog'
-    li.cursive
+    li.cursive{action 'selectFont' 'cursive' target='view'}
       .radio-select
       | cursive
       input type='text' placeholder=' The quick brown fox jumps over the lazy dog'

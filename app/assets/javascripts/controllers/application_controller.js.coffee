@@ -2,16 +2,13 @@ App.ApplicationController = Ember.ArrayController.extend
   needs: 'settings'
   sortAscending: false
   sortProperties: ['updated']
+  font: null
 
-  initializeSettings: (->
-    store = @store
-    @store.find('settings').then (settings)->
-      if settings.get('length') < 1
-        settings = store.createRecord 'settings',
-          'font': 'sans'
-          'mapType': 'natural'
-          'emojiActive': true
-        settings.save()
+  setMapTileFont: (->
+    store = @.get 'store'
+    settings = store.all 'settings'
+    font = settings.get 'lastObject.font'
+    @.set 'font', font
   ).on 'init'
 
   actions:

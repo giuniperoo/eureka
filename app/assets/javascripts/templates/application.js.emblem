@@ -7,6 +7,6 @@ header
   outlet
 
 footer
-  ul.mapnote-tiles
+  ul.mapnote-tiles{bind-attr class='font'}
     each: unless this.isNew: unless this.isEmpty
       render 'mapnote_tile' this

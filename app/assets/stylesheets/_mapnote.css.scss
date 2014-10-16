@@ -71,9 +71,9 @@ textarea {
     font-style: italic;
   }
 
-  // FONT SELECTION
+  /* FONT SELECTION */
 
-  // default: sans
+  // sans (default)
   font-size: 22px;
   line-height: 32px;
   font-family: $sans;
@@ -85,7 +85,7 @@ textarea {
   }
 
   &.cursive {
-    color: #444;
+    color: $charcoal;
     font-size: 42px;
     line-height: 39px;
     font-family: $cursive;

@@ -1,25 +1,30 @@
 App.NoteView = App.EmojiView.extend
   templateName: 'note'
-  emojiActive: null
+
+  settings: (->
+    store = @.get 'controller.store'
+    store.all('settings').get 'lastObject'
+  ).property()
 
   updateNote: (->
     Ember.run.scheduleOnce 'afterRender', this, '_updateNote'
   ).observes('controller.model').on 'didInsertElement'
 
   _updateNote: ->
-    @updateEmojiStatus().then =>
-      if @emojiActive
-        @initializeEmojiDropdown()
-        @initializeEmojiConversion()
-
+    @updateEmojiStatus()
+    @updateFont()
     @setText()
     @initializeNote()
 
   updateEmojiStatus: ->
-    noteView = this
-    @.get('controller.store').find('settings').then (settings)->
-      emojiActive = settings.get 'lastObject.emojiActive'
-      noteView.set 'emojiActive', emojiActive
+    emojiActive = @.get 'settings.emojiActive'
+    if emojiActive
+      @initializeEmojiDropdown()
+      @initializeEmojiConversion()
+
+  updateFont: ->
+    font = @.get 'settings.font'
+    @.$('textarea').addClass font
 
   setText: ->
     if @.get 'controller.model.isNew'
