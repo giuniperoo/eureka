@@ -81,8 +81,11 @@
     @extend %emoji-toggle;
 
     .lazy {
+      $size: 199px;
+
       float: left;
-      height: 199px;
+      width: $size;
+      height: $size;
       margin: 15px 15px 0 0;
       border: 1px dashed $ruddy;
 
