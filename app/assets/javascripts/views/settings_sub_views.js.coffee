@@ -42,12 +42,11 @@ App.SettingsAboutView = App.SettingsSubView.extend
 App.SettingsNoteView = App.SettingsSubView.extend
   classNames: 'note'
 
-  actions:
-    selectFont: (name)->
-      @.get('controller').selectFont name
-      @.setActiveFont name
+  toggleEmoji: (->
+    Ember.run.scheduleOnce('afterRender', this, '_toggleEmoji')
+  ).observes 'controller.emojiActive'
 
-  toggleEmoji: ->
+  _toggleEmoji: ->
     if @.get 'controller.emojiActive'
       @.$('.status').text 'enabled'
       @.$('.emoji-container img').removeClass 'blackAndWhite'
@@ -57,13 +56,17 @@ App.SettingsNoteView = App.SettingsSubView.extend
       @.$('.emoji-container img').addClass 'blackAndWhite'
       @.get('controller').toggleEmoji false
 
+  actions:
+    selectFont: (name)->
+      @.get('controller').selectFont name
+      @.setActiveFont name
+
   setActiveFont: (font = @.get 'controller.font')->
     @.$('.font-list li').removeClass 'active'
     @.$(".#{font}").addClass 'active'
 
   didInsertElement: ->
     @._super()
-    @toggleEmoji()
     @setActiveFont()
 
 
