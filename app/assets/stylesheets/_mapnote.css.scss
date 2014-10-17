@@ -109,3 +109,23 @@ textarea {
     transform: scale(1.2);
   }
 }
+
+.fa-twitter,
+.fa-facebook,
+.fa-envelope {
+  bottom: 8px;
+  color: $ruddy;
+  cursor: pointer;
+  position: absolute;
+  transition: 0.2s;
+  font-size: 22px;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.2);
+  }
+}
+
+.fa-facebook { right: 95px; }
+.fa-twitter  { right: 60px; }
+.fa-envelope { right: 20px; }

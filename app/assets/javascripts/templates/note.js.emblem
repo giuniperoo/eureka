@@ -1,3 +1,7 @@
 Ember.TextArea placeholder='Untitled' value=text
 .note-slider.right.fa.fa-angle-double-right
 .note-slider.left.fa.fa-angle-double-left
+
+.fa.fa-facebook
+.fa.fa-twitter
+.fa.fa-envelope
