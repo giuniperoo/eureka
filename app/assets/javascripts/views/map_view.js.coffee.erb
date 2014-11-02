@@ -32,6 +32,8 @@ App.MapView = Ember.View.extend
     @tileLayer.on 'load', @finishLoading.bind this
     @map.addLayer @tileLayer
 
+    @tileLayer.on 'load', @takeScreenshot.bind this
+
   prepareMarker: (latLng)->
     icon = L.icon
       iconRetinaUrl: "<%= image_path('map-marker.png') %>"
@@ -129,3 +131,16 @@ App.MapView = Ember.View.extend
           longitude: @.get 'controller.model.longitude'
         zoom: @.get 'controller.model.zoom'
       @showMap position
+
+
+  takeScreenshot: ->
+    Em.run.later(this, ->
+      html2canvas document.getElementById('map'),
+        logging: true
+        useCORS: true
+        width: 420
+        onrendered: (canvas)->
+          image = canvas.toDataURL 'image/png'
+          imgElem = $('<img src="' + image + '" width="400">').get(0)
+          document.body.appendChild imgElem
+    , 500)
